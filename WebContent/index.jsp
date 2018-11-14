@@ -13,7 +13,7 @@
 <title>Anti-Feudal</title>
 </head>
 <body>
-<ul class="nav">
+	<ul class="nav">
 		<li style="margin-top:12px;width: 180px;"><img src="./image/LOGO.png"/></li>
 		<li style="width: 15px;"><div style="width: 6px;height: 40px;background-color: #DB9019;"></div></li>
 		<li><a id="navon0" class="active" href="javascript:void(0)">首</a></li>

@@ -1,44 +1,16 @@
-function cambiar_login() {
-	document.querySelector('.cont_forms').className = "cont_forms cont_forms_active_login";
-	document.querySelector('.cont_form_login').style.display = "block";
-	document.querySelector('.cont_form_sign_up').style.opacity = "0";
-
-	setTimeout(function() {
-		document.querySelector('.cont_form_login').style.opacity = "1";
-	}, 400);
-
-	setTimeout(function() {
-		document.querySelector('.cont_form_sign_up').style.display = "none";
-	}, 200);
-}
-
-function cambiar_sign_up(at) {
-	document.querySelector('.cont_forms').className = "cont_forms cont_forms_active_sign_up";
-	document.querySelector('.cont_form_sign_up').style.display = "block";
-	document.querySelector('.cont_form_login').style.opacity = "0";
-
-	setTimeout(function() {
-		document.querySelector('.cont_form_sign_up').style.opacity = "1";
-	}, 100);
-
-	setTimeout(function() {
-		document.querySelector('.cont_form_login').style.display = "none";
-	}, 400);
-
-}
-
-function ocultar_login_sign_up() {
-
-	document.querySelector('.cont_forms').className = "cont_forms";
-	document.querySelector('.cont_form_sign_up').style.opacity = "0";
-	document.querySelector('.cont_form_login').style.opacity = "0";
-
-	setTimeout(function() {
-		document.querySelector('.cont_form_sign_up').style.display = "none";
-		document.querySelector('.cont_form_login').style.display = "none";
-	}, 500);
-
-}
-function send(){
-	swal("尼玛批！")
+function conformInfo() {
+	var username = document.getElementById('username').value;
+	var password = document.getElementById('password').value;
+	var phonenumber = document.getElementById('phonenumber').value;
+	if (username == '' || username == undefined || username == null) {
+		swal("请填写用户名！")
+		event.preventDefault();
+	} else if (password == '' || password == undefined || password == null) {
+		swal("请填写密码！")
+		event.preventDefault();
+	} else if (phonenumber == '' || phonenumber == undefined
+			|| phonenumber == null) {
+		swal("电话号码是必填项！");
+		event.preventDefault();
+	}
 }

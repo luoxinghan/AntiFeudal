@@ -119,3 +119,16 @@ body {
 	color: #fff;
 	transition: all 0.5s;
 }
+.reg{
+	width: 85%;
+	margin: 0 auto;
+	margin-top: 50px;
+	text-align: right;
+}
+.reg a{
+	text-decoration: none;
+	color: black;
+}
+.reg a:hover {
+	color: whitesmoke;
+}

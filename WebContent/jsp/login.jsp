@@ -8,7 +8,7 @@
 		hint = (String)request.getAttribute("hint");
 	}
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -32,7 +32,11 @@
 				<h2>登录</h2>
 				<input type="text" placeholder="手机号/账号/用户名" name="userName" /> 
 				<input type="password" placeholder="密码" name="password" />
-				<button class="btn_login" onClick="cambiar_login()">LOGIN</button>
+				<button class="btn_login" onClick="cambiar_login()">SIGN IN</button>
+				<div class="reg">
+					<%-- <a href="<%=basePath %>jsp/register.jsp">注册</a> --%>
+					<a onclick="unRegister()">注册</a>
+				</div>
 			</div>
 		</form>
 	</div>
