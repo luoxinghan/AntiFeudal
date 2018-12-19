@@ -14,7 +14,7 @@ public class UserImpl implements UserDao{
 
 	@Override
 	public ArrayList<User> findValidUser() {
-		String sql = "SELECT * FROM `user` u WHERE u.is_lock = 0 AND u.is_delete = 0";
+		String sql = "SELECT * FROM sys_user u WHERE u.is_lock = 0 AND u.is_delete = 0";
 		System.out.println("<<=====" + sql);
 		ArrayList<User> userList = new ArrayList<User>();
 		Connection connection = DBUtil.open();
@@ -72,7 +72,7 @@ public class UserImpl implements UserDao{
 
 	@Override
 	public User findByInfo(String str) {
-		String sql = "SELECT * FROM (SELECT * FROM `user` u "
+		String sql = "SELECT * FROM (SELECT * FROM sys_user u "
 				+ "WHERE u.account = '" + str + "' OR u.phone_number = '" + str + "' OR u.user_name = '" + str + "' ) "
 				+ "us WHERE us.is_lock = 0 AND us.is_delete = 0;";
 		System.out.println("<<=====" + sql);

@@ -1,149 +1,29 @@
 package top.antifeudal.util;
 
-import java.sql.Timestamp;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.io.File;
+import java.util.Calendar;
 import java.util.Random;
+import java.util.UUID;
 
 /**
  * @author lxh
  *
  */
 public class StringUtil {
-	
+
 	private static Random random = new Random();
 	private static final int DEFAULT_MAX_NUM = 100;
-	
-	/**
-	 * 将java.util.Date转换为java.sql.Date
-	 * @param utilDate
-	 * @return
-	 */
-	public static java.sql.Date changeToSqlDate(java.util.Date utilDate){
-		java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-		return sqlDate;
-	}
-	
-	/**
-	 * 将java.sql.Date转换为java.util.Date
-	 * @param sqlDate
-	 * @return
-	 */
-	public static java.util.Date changeToUtilDate(java.sql.Date sqlDate){
-		java.util.Date utilDate = new java.util.Date(sqlDate.getTime());
-		return utilDate;
-	}
-	
-	
-	/**
-	 * 将string类型的转换为date类型
-	 * @param str
-	 * @return
-	 */
-	public static Date stringToDate(String str){
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-		Date date = new Date();
-		try {
-			date = sdf.parse(str);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		return date;
-	}
-	
-	/**
-	 * 将date转换为string
-	 * @param date
-	 * @return
-	 */
-	public static String dateFormat(Date date){
-		SimpleDateFormat format0 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-        String time = format0.format(date.getTime());
-        return time;
-	}
-	
-	/**
-	 * 将java.util.Date转换为java.sql.Timestamp
-	 * @param utilDate
-	 * @return
-	 */
-	public static java.sql.Timestamp changeToTimestampDate(java.util.Date utilDate){
-		SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");  
-		java.util.Date date;
-		try {
-			date = sdf.parse(StringUtil.dateFormat(utilDate));
-			java.sql.Timestamp ts= new java.sql.Timestamp(date.getTime());
-			return ts;
-		} catch (ParseException e) {
-			e.printStackTrace();
-		} 
-		return null;
-	}
-	
-	/**
-	 * 将timestamp转换为date类型
-	 * @param timestamp
-	 * @return
-	 */
-	public static java.util.Date timestampChangeToDate(java.sql.Timestamp timestamp) {
-		Timestamp ts = new Timestamp(System.currentTimeMillis());   
-        Date date = new Date();   
-        try {   
-            date = ts;   
-            return date;
-        } catch (Exception e) {   
-            e.printStackTrace();   
-        }
-        return null;
-	}
-	
-	/**
-	 * 将string转换为java.sql.Timestamp
-	 * @param str
-	 * @return
-	 */
-	public static java.sql.Timestamp stringChangeToTimeStamp(String str){
-		Timestamp ts = new Timestamp(System.currentTimeMillis());   
-        try {   
-            ts = Timestamp.valueOf(str);   
-            System.out.println(ts);  
-            return ts;
-        } catch (Exception e) {   
-            e.printStackTrace();   
-        }
-        return null;
-	}
-	
-	/**
-	 * 将java.sql.Timestamp转换为string类型
-	 * @param ts
-	 * @return
-	 */
-	public static String timestampChangeToString(java.sql.Timestamp ts) {
-        String tsStr = "";   
-        DateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");   
-        try {   
-            //方法一   
-            tsStr = sdf.format(ts);   
-            return tsStr;
-        } catch (Exception e) {   
-            e.printStackTrace();   
-        }
-        return null;
-	}
-	
+
 	/**
 	 * 生成当前纳秒值的字符
 	 */
 	public static String createTimestamp() {
-	    return String.valueOf(System.nanoTime())
-	    		.concat(String.valueOf(random.nextInt(DEFAULT_MAX_NUM)));
+		return String.valueOf(System.nanoTime()).concat(String.valueOf(random.nextInt(DEFAULT_MAX_NUM)));
 	}
-	
+
 	/**
 	 * 判断是否为null 是则返回空字符串
+	 * 
 	 * @param str
 	 * @return
 	 */
@@ -154,9 +34,10 @@ public class StringUtil {
 			return str;
 		}
 	}
-	
+
 	/**
 	 * 判断是否为null 是则返回/
+	 * 
 	 * @param str
 	 * @return
 	 */
@@ -167,17 +48,63 @@ public class StringUtil {
 			return str;
 		}
 	}
-	
+
 	/**
 	 * 获取code增加一的字符串
+	 * 
 	 * @param code
 	 * @return
 	 */
 	public static String addANumberByString(String code) {
-		 String result = "";
-	     // 保留code的位数
-	     result = String.format("%0" + code.length() + "d", Integer.parseInt(code) + 1);
+		String result = "";
+		// 保留code的位数
+		result = String.format("%0" + code.length() + "d", Integer.parseInt(code) + 1);
+		return result;
+	}
 
-	     return result;
+	public static String getYearMonthDay() {
+		Calendar calendar = Calendar.getInstance();
+		return "\\" + calendar.get(Calendar.YEAR) + "\\" + (calendar.get(Calendar.MONTH) + 1) + "\\"
+				+ calendar.get(Calendar.DATE);
+	}
+
+	/**
+	 * @Method: makeFileName
+	 * @Description: 生成上传文件的文件名，文件名以：uuid+"_"+文件的原始名称
+	 * @Anthor:孤傲苍狼
+	 * @param filename 文件的原始名称
+	 * @return uuid+"_"+文件的原始名称
+	 */
+	public static String makeFileName(String filename) { // 2.jpg
+		// 为防止文件覆盖的现象发生，要为上传文件产生一个唯一的文件名
+		return UUID.randomUUID().toString() + "_" + filename;
+	}
+
+	/**
+	 * 为防止一个目录下面出现太多文件，要使用hash算法打散存储
+	 * 
+	 * @Method: makePath
+	 * @Description:
+	 * @Anthor:孤傲苍狼
+	 *
+	 * @param filename 文件名，要根据文件名生成存储目录
+	 * @param savePath 文件存储路径
+	 * @return 新的存储目录
+	 */
+	public static String makePath(String filename, String savePath) {
+		// 得到文件名的hashCode的值，得到的就是filename这个字符串对象在内存中的地址
+		int hashcode = filename.hashCode();
+		int dir1 = hashcode & 0xf; // 0--15
+		int dir2 = (hashcode & 0xf0) >> 4; // 0-15
+		// 构造新的保存目录
+		String dir = savePath + "\\" + dir1 + "\\" + dir2; // upload\2\3 upload\3\5
+		// File既可以代表文件也可以代表目录
+		File file = new File(dir);
+		// 如果目录不存在
+		if (!file.exists()) {
+			// 创建目录
+			file.mkdirs();
+		}
+		return dir;
 	}
 }

@@ -18,32 +18,20 @@
 <title>注册</title>
 </head>
 <body>
-	<div class="left"
-		onclick="javascript:window.location.href='<%=basePath%>jsp/login.jsp'"><p>LOGIN</p></div>
+	<jsp:include page="./loading.jsp"></jsp:include>
 	<div class="mid">
-		<div class="reg">
-			<form class="regForm" name="registerForm" action="<%=basePath%>Register"
-				onsubmit="return validate(this);" method="get">
-				<h2>注册</h2>
-				<table class="regInfoTable">
-					<tr>
-						<td class="leftTd">*用户名</td>
-						<td>:</td>
-						<td><input id="username" class="inputText" type="text" name="username" /></td>
-					</tr>
-					<tr>
-						<td class="leftTd">*密码</td>
-						<td>:</td>
-						<td><input id="password" class="inputText" type="text" name="password" /></td>
-					</tr>
-					<tr>
-						<td class="leftTd">*手机号</td>
-						<td>:</td>
-						<td><input id="phonenumber" class="inputText" type="text" name="phonenumber" /></td>
-					</tr>
-				</table>
-				<div style="width: 100%; text-align: center;">
-					<input type="submit" class="btn_login" onClick="conformInfo();" value="Register">
+		<div class="registerform">
+			<h2>马上注册 也没啥用</h2>
+			<form action="<%=basePath%>Register" method="post">
+				<input id="username" class="inputText" type="text" placeholder="用户名"  name="username" />
+				<input id="phonenumber" class="inputText" type="text" placeholder="手机号" name="phonenumber" />
+				<input id="password" class="inputText" type="password" placeholder="密码" name="password" />
+				<input id="repassword" class='inputText' type='password' placeholder="密码确认" />
+				<p>我同意</p><a href="#">条款和条件。</a>
+				<input type="submit" class="btn_login" onClick="conformInfo();" value="Register">
+				<div class="backinfo">
+					<a href="<%=basePath%>jsp/login.jsp">Already have an account?</a><br/>
+					<a href="<%=basePath%>index.jsp">Back to Homepage</a>
 				</div>
 			</form>
 			

@@ -1,0 +1,112 @@
+body,html{
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
+	font-family: "Montserrat", sans-serif;
+}
+
+.sidebar{
+	position: fixed;
+	float: left;
+	width: 250px;
+	height: 100%;
+	z-index: 100;
+	margin-left: -250px;
+	background: #57606f;
+	overflow: hidden;
+	transition: 1.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.side{
+	margin-left: 0;
+}
+.sidebar ul{
+	margin: 60px 0px 40px 50px;
+	padding: 0;
+}
+.sidebar ul li{
+	margin: 10px;
+	list-style: none;
+}
+
+.sidebar ul li a{
+	text-decoration: none;
+	color: white;
+	height: 20px;
+	text-align: left;
+	width: 100%;
+	font-size: 18px;
+	line-height: 20px;
+	text-transform: uppercase;
+	letter-spacing: 4px;
+	display: block;
+	transition: 0.9s;
+}
+
+.sidebar ul li a span{
+	font-family: fantasy;
+}
+
+.sidebar ul li a:hover{
+	color: #87cefa;
+}
+.menu{
+	position: fixed;
+	z-index: 200;
+	left: 0;
+	top: 0;
+	width: 60px;
+    height: 100%;
+	display: flex;
+    justify-content: center;
+}
+.con{
+	position: absolute;
+	margin: 10px auto;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	border: 1px solid #2e2e2e;
+	background: #87cefa;
+	transition: 0.8s all;
+}
+.con a{
+	padding: 15px;
+	cursor: pointer;
+}
+.conb{
+	background: #87cefa;
+}
+
+.conc{
+	background: white;
+}
+
+.btn{
+	position: relative;
+	padding: 0 10px;
+	top: 50%;
+	transform: translate(-0%, -50%);
+	height: fit-content;
+	font-size: 14px;
+	font-weight: 700;
+	text-decoration: none;
+	font-family: FontAwesome;
+	cursor: pointer;
+	writing-mode: vertical-lr;
+	text-align: center;
+	transition: 0.6s all;
+}
+.btnb{
+	color: #57606f;
+}
+.btnc{
+	color: white;
+}
+/* .btn:before{
+	content: '\f105';
+}
+
+.btnc:before{
+	content: '\f104';
+} */

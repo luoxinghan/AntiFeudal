@@ -2,8 +2,15 @@ package top.antifeudal.entity;
 
 import java.util.Date;
 
+/**
+ * @describe 用户表对应的用户实体
+ * @author luoxinghan
+ * @date 2018/12/08
+ * @version 1.0
+ */
 public class User {
 
+	/** user id */
 	private Integer id;
 	
 	private Integer roleId;

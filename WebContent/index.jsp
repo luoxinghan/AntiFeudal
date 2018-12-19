@@ -1,11 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%
+    String path = request.getContextPath();
+	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="./css/antiFeudal.css" />
-<!-- <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Open+Sans'> -->
 <link rel="shortcut icon" type="image/x-icon" href="./image/icon/icon.ico" media="screen" />
 <link rel="stylesheet" href="./css/style.css">
 <script src="./js/jquery.js" /></script>
@@ -13,8 +16,9 @@
 <title>Anti-Feudal</title>
 </head>
 <body>
+	<jsp:include page="./jsp/loading.jsp"></jsp:include>
 	<ul class="nav">
-		<li style="margin-top:12px;width: 180px;"><img src="./image/LOGO.png"/></li>
+		<!-- <li style="margin-top:12px;width: 180px;"><img src="./image/LOGO.png"/></li> -->
 		<li style="width: 15px;"><div style="width: 6px;height: 40px;background-color: #DB9019;"></div></li>
 		<li><a id="navon0" class="active" href="javascript:void(0)">首</a></li>
 		<li><a id="navon1" href="javascript:void(0)">壹</a></li>
@@ -23,20 +27,16 @@
 		<li><a id="navon4" href="javascript:void(0)">肆</a></li>
 		<li><a id="navon5" href="javascript:void(0)">伍</a></li>
 	</ul>
-	<audio class="bgmusic" controls="controls"  autoplay="autoplay" loop="loop">
-  		<source src="./music/腰乐队 - 晚春.mp3" type="audio/ogg">
-  			未找到音频文件
-	</audio>
 	
   	<div id="div0">
   		<div class="mid">
-  			<video class="bgvid"  onMouseOver="this.muted=true;" onMouseOut="this.muted=true;" autoplay="autoplay" 
+  			<!-- <video class="bgvid"  onMouseOver="this.muted=true;" onMouseOut="this.muted=true;" autoplay="autoplay" 
 			loop="loop" autobuffer="true">
 	  		<source src="./video/破云.mp4" type="video/mp4">
 	  			未找到视频文件
-	  		</video>
+	  		</video> -->
 			<h1 class="xmTrip">
-				TRIP TO XMN
+				对不起 暂未搭建完成
 			</h1>
   		</div>
   	</div>

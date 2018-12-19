@@ -43,7 +43,7 @@ $(function(){
             if(top >= n*currentHeight && top <= (n+1)*currentHeight){ //在此处通过判断滚动条到顶部的值和当前窗口高度的关系（当前窗口的n倍 <= top <= 当前窗口的n+1倍）来取得和导航索引值的对应关系
                 num=n;
             }
-            $(".nav > li > a").removeClass("active").eq(num).addClass("active");     //先删除导航所有的选中状态，在通过上面判断中获得的导航索引值给当前导航加选中样式！
+            $(".nav > li > a").removeClass("active").eq(num + 1).addClass("active");     //先删除导航所有的选中状态，在通过上面判断中获得的导航索引值给当前导航加选中样式！
         }
 
     })
