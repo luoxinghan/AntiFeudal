@@ -2,6 +2,14 @@ package top.antifeudal.entity;
 
 import java.util.Date;
 
+/**
+ * 前台展示内容，为了及时修改，使用从数据库读取的方式。
+ * Title: FrontContent
+ * Description: 
+ * @author luoxinghan
+ * @date 2019年2月25日 上午2:40:45
+ *
+ */
 public class FrontContent {
 	
 	private Integer id;

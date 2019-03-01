@@ -35,6 +35,12 @@
 				</div>
 			</form>
 			
+			<form action="Login" method="post">
+				<input type = "text" name = "username" />
+				<input type = "text" name = "password" />
+				<input type = "submit" value="login" />
+			</form>
+			
 		</div>
 	</div>
 </body>

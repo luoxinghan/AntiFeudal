@@ -16,24 +16,24 @@
 <body>
 <div class="sidebar">
 	<ul>
-		<li><a class="fa fa-circle-o" href="#"><span> Home</span></a></li>
+		<li><a class="fa fa-circle-o" href="<%=basePath%>index.jsp"><span> Home</span></a></li>
 		<li><a class="fa fa-circle-o" href="#"><span> Story</span></a></li>
-		<li><a class="fa fa-circle-o" href="#"><span> Photo</span></a></li>
+		<li><a class="fa fa-circle-o" href="<%=basePath%>photos.jsp"><span> Photo</span></a></li>
 		<li><a class="fa fa-circle-o" href="#"><span> Trip</span></a></li>
 		<li><a class="fa fa-circle-o" href="#"><span> Contact</span></a></li>
 		<li><a class="fa fa-circle-o" href="#"><span> More+</span></a></li>
 	</ul>
 </div>
 <div class="menu">
-	<div class="con conb"><a></a></div>
-	<a class="btn btnb">Contradiction<i class="icn fa fa-angle-right fa-2x"></i></a>
+	<div class="con conb"><a href="<%=basePath%>index.jsp"></a></div>
+	<a class="btn-slider btnb">MENU<i class="icn fa fa-angle-right fa-2x"></i></a>
 </div>
 <script type="text/javascript">
-	$('.btn').on("click", function(){
+	$('.btn-slider').on("click", function(){
 		$('.icn').toggleClass('fa-angle-right');
 		$('.icn').toggleClass('fa-angle-left');
-		$(".btn").toggleClass("btnb");
-		$(".btn").toggleClass("btnc");
+		$(".btn-slider").toggleClass("btnb");
+		$(".btn-slider").toggleClass("btnc");
 		$(".con").toggleClass("conb");
 		$(".con").toggleClass("conc");
 		$('.sidebar').toggleClass('side');

@@ -15,7 +15,9 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet Filter implementation class SurveyFilter
  */
-@WebFilter("/index.jsp")
+/**
+ * @WebFilter("/index.jsp")
+ */
 public class SurveyFilter implements Filter {
 
     /**

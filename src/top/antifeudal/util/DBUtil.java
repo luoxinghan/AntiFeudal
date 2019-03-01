@@ -14,13 +14,14 @@ public class DBUtil {
 	private static String driver = "com.mysql.jdbc.Driver";
 
 	//数据库位置
-	private static String url = "jdbc:mysql://localhost:3306/antifeudal?Unicode\\=true&characterEncoding\\=UTF-8";
-
+	private static String url = "jdbc:mysql://localhost:3306/antifeudal?Unicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC";
+	/*private static String url = "jdbc:mysql://localhost:3306/antifeudal?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true";*/
+	
 	//用户名
 	private static String username = "root";
 
 	//密码
-	private static String password = "root";
+	private static String password = "741067";
 
 	//打开连接
 	public static Connection open(){

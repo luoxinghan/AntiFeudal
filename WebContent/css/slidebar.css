@@ -40,7 +40,7 @@ body,html{
 	text-transform: uppercase;
 	letter-spacing: 4px;
 	display: block;
-	transition: 0.9s;
+	transition: 0.5s;
 }
 
 .sidebar ul li a span{
@@ -49,6 +49,7 @@ body,html{
 
 .sidebar ul li a:hover{
 	color: #87cefa;
+	padding-left: 6px;
 }
 .menu{
 	position: fixed;
@@ -82,7 +83,7 @@ body,html{
 	background: white;
 }
 
-.btn{
+.btn-slider{
 	position: relative;
 	padding: 0 10px;
 	top: 50%;
@@ -98,7 +99,7 @@ body,html{
 	transition: 0.6s all;
 }
 .btnb{
-	color: #57606f;
+	color: #222222;
 }
 .btnc{
 	color: white;

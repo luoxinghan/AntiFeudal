@@ -1,10 +1,32 @@
 @charset "UTF-8";
 
+@-webkit-keyframes fadein {
+    0% {
+        opacity: 0;
+        background-color: #fff;
+    }
+    100% {
+        opacity: 1;
+        background-color:  #fff;
+    }
+} 
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 body {
 	margin: 0;
 	padding: 0;
 	background: #ced6e0;
 	overflow-x: hidden;
+ 	-webkit-animation-name: fadein;
+    -webkit-animation-duration: 3s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: 1; /* 动画只播放一次  */
 }
 
 .hide-scroll {
@@ -16,9 +38,9 @@ body {
 	left: 0;
 	z-index: 10;
 	width: 100%;
-	height: 100vh;
-	/* #dfe4ea */
-	background-color: #f2eee2;
+	height: 95vh;
+	/* #dfe4ea #f2eee2*/ 
+	background-color: #CC6666;
 	transition: left 1.4s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
@@ -28,7 +50,7 @@ body {
 	font-weight: 900;
 	letter-spacing: 15px;
 	position: absolute;
-	top: 50%;
+	top: 52%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	margin: 0;
@@ -38,28 +60,60 @@ body {
 	-webkit-background-clip: text;
 }
 
-.div0 p {
-	font-size: 12px;
-	font-weight: 900;
-	transform: translate(-0%, -100%);
-	position: absolute;
-	top: 100%;
-	right: 0%;
-	margin: 0;
-}
-
-.div0 p a {
-	text-decoration: none;
-}
-
 .div1 {
 	position: relative;
 	left: 0;
 	z-index: 10;
 	width: 100%;
 	height: 110vh;
-	background-color: #ecf0f1;
+	background-color: #CC6666;
 	transition: left 1.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.div1-area{
+	width: 90%;
+	height: 85%;
+	margin: 0 auto;
+	background-color: #ffffff;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	border-radius: 5px;
+}
+
+.area-card{
+	position: absolute;
+	left: 10%;
+	top: 10%;
+	width: 25%;
+	height: 65%;
+}
+
+.area-card img{
+	width: 100%;
+	height: 100%;
+	border: 2px solid #555555;
+	transition: 0.5s;
+}
+
+.area-card:hover img{
+	cursor: pointer;
+	-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  	filter: grayscale(100%);
+}
+
+.area-intro{
+	position: absolute;
+	right: 10%;
+	top: 10%;
+	width: 50%;
+	height: 65%;
+	background-color: #f4f4f4;
+}
+
+.intro-container{
+ 	padding: 0 16px;
+}
+.intro-title{
+	color: #999999;
 }
 
 .div2 {
@@ -67,8 +121,8 @@ body {
 	left: 0;
 	z-index: 10;
 	width: 100%;
-	height: 110vh;
-	background-color: #efe3ce;
+	height: 105vh;
+	background-color: #f1f2f6;
 	transition: left 1.4s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
@@ -107,39 +161,11 @@ body {
 	height: 200px;
 }
 
-.div2-know-btn {
-	position: absolute;
-	z-index: 150;
+.div2-btn{
+	z-index: 200;
 	top: 70%;
 	left: 50%;
-	transform: translate(-50%, -50%);
-	width: 40px;
-	height: 40px;
-	border-radius: 20px;
-	background: none;
-	border: 1px solid #57606f;
-	color: #57606f;
-	transition: all 0.8s;
-  	cursor: pointer;
-  	text-align: center;
-  	font-size: 13px;
-  	font-weight: 700;
-}
-
-.div2-know-btn:hover{
-	width: 80px;
-	background: #57606f;
-	color: #efe3ce;
-}
-
-.div2-know-btn span {
- 	display: none;
-	opacity: 0;
-}
-
-.div2-know-btn:hover:after {
-	content: "更多";
-	transition: all 0.8s;
+	transform: translate(-50%, -0%);
 }
 
 .div3 {
@@ -147,8 +173,8 @@ body {
 	left: 0;
 	z-index: 10;
 	width: 100%;
-	height: 110vh;
-	background-color: #dfe4ea;
+	height: 105vh;
+	background-color: #ffffff;
 	transition: left 1.4s cubic-bezier(0.19, 1, 0.22, 1);
 }
 

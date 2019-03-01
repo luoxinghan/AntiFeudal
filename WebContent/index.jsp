@@ -1,179 +1,80 @@
+<%@page import="top.antifeudal.entity.FrontContent"%>
+<%@page import="top.antifeudal.impl.FrontContentImpl"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%
     String path = request.getContextPath();
 	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+	FrontContentImpl fci = new FrontContentImpl();
+	FrontContent frontContent = fci.getByJspAndDivName("index.jsp", "div2");
 %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" type="text/css" href="./css/antiFeudal.css" />
-<link rel="shortcut icon" type="image/x-icon" href="./image/icon/icon.ico" media="screen" />
-<link rel="stylesheet" href="./css/style.css">
-<script src="./js/jquery.js" /></script>
-<script type="text/javascript" src="./js/antiFeudal.js" /></script>
-<title>Anti-Feudal</title>
+<meta charset="UTF-8">
+<title>AntiFeudal</title>
+<link rel="shortcut icon" type="image/x-icon" href="<%=basePath %>image/icon/icon.ico" media="screen" />
+<link rel="stylesheet" type="text/css" href="<%=basePath %>/css/index.css" />
+<link rel="stylesheet" type="text/css" href="<%=basePath %>/common/common.css" />
 </head>
 <body>
 	<jsp:include page="./jsp/loading.jsp"></jsp:include>
-	<ul class="nav">
-		<!-- <li style="margin-top:12px;width: 180px;"><img src="./image/LOGO.png"/></li> -->
-		<li style="width: 15px;"><div style="width: 6px;height: 40px;background-color: #DB9019;"></div></li>
-		<li><a id="navon0" class="active" href="javascript:void(0)">首</a></li>
-		<li><a id="navon1" href="javascript:void(0)">壹</a></li>
-		<li><a id="navon2" href="javascript:void(0)">貳</a></li>
-		<li><a id="navon3" href="javascript:void(0)">叄</a></li>
-		<li><a id="navon4" href="javascript:void(0)">肆</a></li>
-		<li><a id="navon5" href="javascript:void(0)">伍</a></li>
-	</ul>
+	<jsp:include page="./common/slidebar.jsp"></jsp:include>
+	<div class="div0">
+		<h1>ANTIFEUDAL</h1>
+	</div>
+	<div class="div1">
+		<div class="div1-area">
+		    <div class="area-card">
+		      <a href="<%=basePath %>/jsp/photos.jsp" class="option">
+		      	<img src="<%=basePath %>/image/group1.jpg" alt="LuoXinghan" />
+		      </a>
+		    </div> 
+			 
+			<div class="area-intro">
+				<div class="intro-container">
+					<h2>Luo Xinghan</h2>
+					<p class="intro-title">Student</p>
+					<p>CQUT and GRSU University students. Major: Software Engineering.</p>
+					<p>生活是苦难的，我又滑着我的断桨出发了。</p>
+					<p>xinghanluo@gmail.com</p>
+					<p><a href="<%=basePath %>/jsp/contact.jsp"><button class="btn">Contact</button></a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="div2">
+		<div class="div2-know-content">
+			<h2>写在最后</h2>
+			<div class="div2-know-text">
+				<%=frontContent != null ? frontContent.getContent() : "" %>
+			</div>
+			<a href="<%=basePath %>/jsp/photos.jsp"><button class="btn div2-btn">read more</button></a>
+		</div>
+		<img alt="div2-background-image" src="<%=basePath %>image/div2-bg.png" />
+	</div>
+	<footer class="div4">
+		<div class="div4-footer-top">
+			<ul>
+				<li><a href="#">Home</a></li>
+				<li><a href="#">About AntiFeudal</a></li>
+				<li><a href="#">Contact Me</a></li>
+			</ul>
+		</div>
+		<div class="div4-footer-bottom">
+			<small>© 2019 AntiFeudal All Rights Reserved. V2.3</small>
+		</div>
+	</footer>
 	
-  	<div id="div0">
-  		<div class="mid">
-  			<!-- <video class="bgvid"  onMouseOver="this.muted=true;" onMouseOut="this.muted=true;" autoplay="autoplay" 
-			loop="loop" autobuffer="true">
-	  		<source src="./video/破云.mp4" type="video/mp4">
-	  			未找到视频文件
-	  		</video> -->
-			<h1 class="xmTrip">
-				对不起 暂未搭建完成
-			</h1>
-  		</div>
-  	</div>
-	<div id="div1">
-		<h1 class="textHead">—— 壹 ——</h1>
-  <div class="cont s--inactive">
-  <!-- cont inner start -->
-  <div class="cont__inner">
-    <!-- el start -->
-    <div class="el">
-      <div class="el__overflow">
-        <div class="el__inner">
-          <div class="el__bg"></div>
-          <div class="el__preview-cont">
-            <h2 class="el__heading">Section 1</h2>
-          </div>
-          <div class="el__content">
-            <div class="el__text">Whatever</div>
-            <div class="el__close-btn"></div>
-          </div>
-        </div>
-      </div>
-      <div class="el__index">
-        <div class="el__index-back">1</div>
-        <div class="el__index-front">
-          <div class="el__index-overlay" data-index="1">1</div>
-        </div>
-      </div>
-    </div>
-    <!-- el end -->
-    <!-- el start -->
-    <div class="el">
-      <div class="el__overflow">
-        <div class="el__inner">
-          <div class="el__bg"></div>
-          <div class="el__preview-cont">
-            <h2 class="el__heading">Section 2</h2>
-          </div>
-          <div class="el__content">
-            <div class="el__text">Whatever</div>
-            <div class="el__close-btn"></div>
-          </div>
-        </div>
-      </div>
-      <div class="el__index">
-        <div class="el__index-back">2</div>
-        <div class="el__index-front">
-          <div class="el__index-overlay" data-index="2">2</div>
-        </div>
-      </div>
-    </div>
-    <!-- el end -->
-    <!-- el start -->
-    <div class="el">
-      <div class="el__overflow">
-        <div class="el__inner">
-          <div class="el__bg"></div>
-          <div class="el__preview-cont">
-            <h2 class="el__heading">Section 3</h2>
-          </div>
-          <div class="el__content">
-            <div class="el__text">Whatever</div>
-            <div class="el__close-btn"></div>
-          </div>
-        </div>
-      </div>
-      <div class="el__index">
-        <div class="el__index-back">3</div>
-        <div class="el__index-front">
-          <div class="el__index-overlay" data-index="3">3</div>
-        </div>
-      </div>
-    </div>
-    <!-- el end -->
-    <!-- el start -->
-    <div class="el">
-      <div class="el__overflow">
-        <div class="el__inner">
-          <div class="el__bg"></div>
-          <div class="el__preview-cont">
-            <h2 class="el__heading">Section 4</h2>
-          </div>
-          <div class="el__content">
-            <div class="el__text">Whatever</div>
-            <div class="el__close-btn"></div>
-          </div>
-        </div>
-      </div>
-      <div class="el__index">
-        <div class="el__index-back">4</div>
-        <div class="el__index-front">
-          <div class="el__index-overlay" data-index="4">4</div>
-        </div>
-      </div>
-    </div>
-    <!-- el end -->
-    <!-- el start -->
-    <div class="el">
-      <div class="el__overflow">
-        <div class="el__inner">
-          <div class="el__bg"></div>
-          <div class="el__preview-cont">
-            <h2 class="el__heading">Section 5</h2>
-          </div>
-          <div class="el__content">
-            <div class="el__text">Whatever</div>
-            <div class="el__close-btn"></div>
-          </div>
-        </div>
-      </div>
-      <div class="el__index">
-        <div class="el__index-back">5</div>
-        <div class="el__index-front">
-          <div class="el__index-overlay" data-index="5">5</div>
-        </div>
-      </div>
-    </div>
-    <!-- el end -->
-  </div>
-  <!-- cont inner end -->
-</div>
-  </div>
-	</div>
-	<div id="div2">
-		<h1 class="textHead">—— 贰 ——</h1>
-	</div>
-	<div id="div3">
-		<h1 class="textHead">—— 叄 ——</h1>
-	</div>
-	<div id="div4">
-		<h1 class="textHead">—— 肆 ——</h1>
-	</div>
-	<div id="div5">
-		<h1 class="textHead">—— 伍 ——</h1>
-	</div>
-	<div class="bottom">
-		<div class="copyright">© 2017 anti-feudal版权所有</div>
-	</div>
+<script type="text/javascript">
+	$('.btn-slider').on("click", function(){
+		$('.div0').toggleClass('menu-open');
+		$('.div1').toggleClass('menu-open');
+		$('.div2').toggleClass('menu-open');
+		$('.div3').toggleClass('menu-open');
+		$('.div4').toggleClass('menu-open');
+		$("body").toggleClass("hide-scroll");
+	});
+</script>
 </body>
 </html>

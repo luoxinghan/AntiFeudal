@@ -107,4 +107,23 @@ public class StringUtil {
 		}
 		return dir;
 	}
+	
+	public static String getTheProcessedPath(String path) {
+		path = path.replaceAll("/", "\\\\");
+		path = path.replaceAll( "\\\\ ",   "\\\\\\\\ ");
+		return path;
+	}
+	
+	/**
+	 * 返回一个字符串子字符串的后面的字符
+	 * @Title: getAfterString   
+	 * @Description: TODO(这里用一句话描述这个方法的作用)   
+	 * @param str
+	 * @param substr 
+	 * @return: String      
+	 * @throws
+	 */
+	public static String getAfterString(String str, String substr) {
+		return str.substring(str.lastIndexOf(substr) + substr.length());
+	}
 }
