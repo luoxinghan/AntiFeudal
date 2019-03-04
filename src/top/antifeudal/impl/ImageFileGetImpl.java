@@ -9,13 +9,14 @@ import java.util.Date;
 
 
 import top.antifeudal.dao.ImageFileGetDao;
+import top.antifeudal.entity.BImageFile;
 import top.antifeudal.entity.ImageFile;
 import top.antifeudal.util.DBUtil;
 
 public class ImageFileGetImpl implements ImageFileGetDao{
 
 	@Override
-	public ImageFile getAImageFileByOriginId(Integer fid) {
+	public ImageFile getAImageFileById(Integer fid) {
 		return null;
 		/*Connection connection = DBUtil.getConnection();
 		String sql = "insert into file_upload (file_name,file_path,create_time,is_delete,remark) "
@@ -87,6 +88,39 @@ public class ImageFileGetImpl implements ImageFileGetDao{
 			e.printStackTrace();
 			return null;
 		} finally {
+			DBUtil.close(connection);
+		}
+	}
+
+	@Override
+	public ArrayList<BImageFile> getBackImageFiles(String fn, String um) {
+		ArrayList<BImageFile> imageFiles = new ArrayList<BImageFile>();
+		Connection connection = DBUtil.open();
+		String sql = "SELECT f.id, f.file_name, o.country, u.user_name, f.file_ext, f.file_size, f.is_show " 
+				+ "FROM sys_file AS f, sys_file_origin AS fo, sys_origin AS o, sys_user AS u "
+				+ "WHERE f.id = fo.file_id AND fo.origin_id = o.id AND o.user_id = u.id AND "
+				+ "u.user_name LIKE '%" + fn + "%' AND u.phone_number LIKE '%" + um +"%';";
+		System.out.println("<<=====" + sql);
+
+		try {
+			PreparedStatement pstm = connection.prepareStatement(sql);
+			ResultSet rs = pstm.executeQuery();
+			while(rs.next()){
+				Integer id = rs.getInt(1);
+				String fileName = rs.getString(2);
+				String country = rs.getString(3);
+				String userName = rs.getString(4);
+				String fileExt = rs.getString(5);
+				Double fileSize = rs.getDouble(6);
+				Byte isShow = rs.getByte(7);
+				BImageFile imageFile = new BImageFile(id,fileName,country,userName,fileExt,fileSize,isShow);
+				imageFiles.add(imageFile);
+			}
+			return imageFiles;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return imageFiles;
+		}finally {
 			DBUtil.close(connection);
 		}
 	}

@@ -2,6 +2,7 @@ package top.antifeudal.dao;
 
 import java.util.ArrayList;
 
+import top.antifeudal.entity.BImageFile;
 import top.antifeudal.entity.ImageFile;
 
 
@@ -15,7 +16,7 @@ public interface ImageFileGetDao {
 	 * @return: ImageFile      
 	 * @throws
 	 */
-	public ImageFile getAImageFileByOriginId(Integer fid);
+	public ImageFile getAImageFileById(Integer fid);
 	
 	/**
 	 * 根据地区id找到所有图片
@@ -35,4 +36,15 @@ public interface ImageFileGetDao {
 	 * @throws
 	 */
 	public Integer getMaxImageFilesId();
+	
+	/**
+	 * @Title: getBackImageFiles   
+	 * @Description: TODO(根据文件名或用户名获取所有文件信息)   
+	 * @param: @param fileName
+	 * @param: @param userName
+	 * @param: @return      
+	 * @return: ArrayList<ImageFile>      
+	 * @throws
+	 */
+	public ArrayList<BImageFile> getBackImageFiles(String fileName, String userName);
 }

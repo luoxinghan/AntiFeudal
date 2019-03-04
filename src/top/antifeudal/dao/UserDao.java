@@ -2,6 +2,7 @@ package top.antifeudal.dao;
 
 import java.util.ArrayList;
 
+import top.antifeudal.entity.BUser;
 import top.antifeudal.entity.User;
 
 /**
@@ -19,10 +20,26 @@ public interface UserDao {
 	public ArrayList<User> findValidUser();
 	
 	/**
+	 * @Title: findAllUser   
+	 * @Description: TODO(获取所有的用户)        
+	 * @return: ArrayList<User>      
+	 * @throws
+	 */
+	public ArrayList<User> findAllUser();
+	
+	/**
 	 * 添加一个新的用户
 	 * @return
 	 */
 	public Boolean addNewUser();
+	
+	/**
+	 * @Title: findAllBackUsers   
+	 * @Description: TODO(后台管理获取用户)      
+	 * @return: ArrayList<User>      
+	 * @throws
+	 */
+	public ArrayList<BUser> findAllBackUsers(String userName, String telephone);
 	
 	/**
 	 * 根据用户id删除用户

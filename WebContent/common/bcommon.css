@@ -1,0 +1,132 @@
+@charset "UTF-8";
+
+html,body {
+  	font-family: "Lato", sans-serif;
+  	padding-top: 1px;
+	border: 0;
+	margin: 0;
+	width: 100%;
+	height: 99%;
+	background: #CC6666;
+	-webkit-animation-name: fadein;
+    -webkit-animation-duration: 1.5s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: 1; /* 动画只播放一次  */
+}
+
+@-webkit-keyframes fadein {
+    0% {
+        opacity: 0;
+        background-color: #fffff;
+    }
+    100% {
+        opacity: 1;
+        background-color:  #CC6666;
+    }
+} 
+
+/* table{
+	width:100px;
+	table-layout:fixed;只有定义了表格的布局算法为fixed，下面td的定义才能起作用。
+}
+td{
+	width:100%;
+	word-break:keep-all;不换行
+	white-space:nowrap;不换行
+	overflow:hidden;内容超出宽度时隐藏超出部分的内容
+	text-overflow:ellipsis;当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用
+} */
+
+/* Button */
+.btn{
+	border-radius: 5px;
+	font-family: "montserrat", sans-serif;
+	font-size: 12px;
+	color: #ffffff;
+	text-transform: uppercase;
+	margin: 10px 0px 0px 0px;
+	padding: 5px 20px;
+	min-width: 60px;
+	cursor: pointer;
+	/* transition: color 0.4s linear; */
+	transition: 0.4s;
+}
+
+.btn:hover{
+	background-color: #ffffff;
+	color: #000000;
+}
+
+.btn-add{
+	border: 2px solid #2ed573;
+	background: rgba(46, 213, 115, 0.8);
+}
+
+.btn-sh{
+	border: 2px solid #70a1ff;
+	background: rgba(112, 161, 255, 0.8);
+}
+
+/* Txt */
+
+.sh-txt{
+	color: #ffffff;
+}
+
+.a-ud{
+	color: #ffa502;
+	cursor: pointer;
+}
+
+.a-dl{
+	color: #ff6348;
+	cursor: pointer;
+}
+
+.a-lk{
+	color: #747d8c;
+	cursor: pointer;
+}
+
+/* Input */
+.sh {
+	border: 1px solid #555555;
+	width: 150px;
+	border-radius: 3px;
+	font-size: 14px;
+	margin: 0px 10px 0px 0px;
+	padding: 5px 5px;
+	min-width: 80px;
+}
+
+.top-search-area{
+	width: 94%;
+	margin: 15px auto;
+}
+
+.mid-table-area{
+	width: 94%;
+	margin: 15px auto;
+}
+
+.show-table{
+	width: 100%;
+	background-color: whitesmoke;
+	text-align: center;
+	border-collapse:collapse;
+}
+
+.show-table tr {
+	height: 30px;
+	color: #555;
+}
+
+.show-table tr:nth-child(even) {/*odd*/
+	background-color: white;
+}
+
+.show-table tr:first-child {
+	border: 1px solid #555;
+}
+
+
