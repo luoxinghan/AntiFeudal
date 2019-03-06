@@ -17,11 +17,11 @@
 <body>
 	<div id="mySidenav" class="sidenav">
 		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-		<a href="<%=basePath%>UsersManagement" target="innerFrame">Users</a>
+		<a href="<%=basePath%>UserManagement" target="innerFrame">Users</a>
 		<a href="#">Roles</a> 
 		<a href="#">Stories</a> 
-		<a href="<%=basePath%>PhotosManagement" target="innerFrame">Photos</a> 
-		<a href="#">Origins</a>
+		<a href="<%=basePath%>PhotoManagement" target="innerFrame">Photos</a> 
+		<a href="<%=basePath%>OriginManagement" target="innerFrame">Origins</a>
 	</div>
 
 	<div id="topInfo" class="topInfo">

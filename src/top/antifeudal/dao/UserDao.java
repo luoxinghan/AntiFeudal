@@ -3,6 +3,7 @@ package top.antifeudal.dao;
 import java.util.ArrayList;
 
 import top.antifeudal.entity.BUser;
+import top.antifeudal.entity.PageBean;
 import top.antifeudal.entity.User;
 
 /**
@@ -34,12 +35,23 @@ public interface UserDao {
 	public Boolean addNewUser();
 	
 	/**
+	 * @Title: getBackUserSize   
+	 * @Description: TODO(获取所有用户)   
+	 * @param: @param userName
+	 * @param: @param telephone
+	 * @param: @return      
+	 * @return: Integer      
+	 * @throws
+	 */
+	public Integer getBackUserSize(String userName, String telephone);
+	
+	/**
 	 * @Title: findAllBackUsers   
 	 * @Description: TODO(后台管理获取用户)      
 	 * @return: ArrayList<User>      
 	 * @throws
 	 */
-	public ArrayList<BUser> findAllBackUsers(String userName, String telephone);
+	public PageBean<BUser> getAllBackUsers(String userName, String telephone, Integer curPage, Integer pageSize);
 	
 	/**
 	 * 根据用户id删除用户

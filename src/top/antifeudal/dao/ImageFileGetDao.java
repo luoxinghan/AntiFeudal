@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import top.antifeudal.entity.BImageFile;
 import top.antifeudal.entity.ImageFile;
+import top.antifeudal.entity.PageBean;
 
 
 public interface ImageFileGetDao {
@@ -46,5 +47,16 @@ public interface ImageFileGetDao {
 	 * @return: ArrayList<ImageFile>      
 	 * @throws
 	 */
-	public ArrayList<BImageFile> getBackImageFiles(String fileName, String userName);
+	public PageBean<BImageFile> getAllBackImageFiles(String fileName, String userName, Integer curPage, Integer pageSize);
+	
+	/**
+	 * @Title: getBackImageFileSize   
+	 * @Description: TODO(图片文件后台获取长度)   
+	 * @param: @param fn
+	 * @param: @param um
+	 * @param: @return      
+	 * @return: Integer      
+	 * @throws
+	 */
+	public Integer getBackImageFileSize(String fn, String um);
 }

@@ -67,10 +67,24 @@ td{
 	background: rgba(112, 161, 255, 0.8);
 }
 
+.btn-add-sv{
+	border: 2px solid #70a1ff;
+	background: rgba(112, 161, 255, 0.8);
+}
+
+.btn-add-rt{
+	border: 2px solid #ced6e0;
+	background: rgba(206, 214, 224, 0.8);
+}
+
 /* Txt */
 
 .sh-txt{
 	color: #ffffff;
+}
+
+a{
+	text-decoration: none;
 }
 
 .a-ud{
@@ -83,6 +97,11 @@ td{
 	cursor: pointer;
 }
 
+.a-rv{
+	color: #2ed573;
+	cursor: pointer;
+}
+
 .a-lk{
 	color: #747d8c;
 	cursor: pointer;
@@ -90,6 +109,7 @@ td{
 
 /* Input */
 .sh {
+	box-sizing: border-box;
 	border: 1px solid #555555;
 	width: 150px;
 	border-radius: 3px;
@@ -99,12 +119,48 @@ td{
 	min-width: 80px;
 }
 
+.search-box {
+	box-sizing: border-box;
+	width: 80%;
+	padding: 8px 10px;
+	margin: 10px auto;
+	border: 1px solid #555555;
+	border-radius: 5px;
+	color: #222222;
+	min-width: 120px;
+}
+
+.search-text-area {
+	box-sizing: border-box;
+	width: 80%;
+	padding: 8px 10px;
+	border: 1px solid #555555;
+	border-radius: 5px;
+}
+
+.search-select {
+	box-sizing: border-box;
+	width: 80%;
+	padding: 8px 10px;
+	border: 1px solid #555555;
+	border-radius: 5px;
+}
+
+.search-select option{
+	color: #555555;
+}
+
 .top-search-area{
 	width: 94%;
 	margin: 15px auto;
 }
 
 .mid-table-area{
+	width: 94%;
+	margin: 15px auto;
+}
+
+.btm-page-area{
 	width: 94%;
 	margin: 15px auto;
 }
@@ -130,3 +186,57 @@ td{
 }
 
 
+/* Add */
+.add-area {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: 50%;
+	padding: 10px 0px;
+	background: #f1f2f6;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	border-radius: 5px;
+	text-align: center;
+}
+
+.top-tt{
+	width: 80%;
+	padding: 15px 10px;
+	margin: 10px auto;
+	border-radius: 5px;
+	color: #ffffff;
+	font-size: 18px;
+	min-width: 120px;
+}
+
+.tt-add{
+	background-color: #70a1ff;
+}
+
+.tt-update{
+	background-color: #ffa502;
+}
+
+/* Page */
+.pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.pagination a.active {
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 5px;
+}
+
+.pagination a:hover:not(.active) {
+  background-color: #ddd;
+  border-radius: 5px;
+}

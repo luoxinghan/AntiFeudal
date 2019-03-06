@@ -8,6 +8,7 @@ import java.util.Date;
 
 import top.antifeudal.dao.UserDao;
 import top.antifeudal.entity.BUser;
+import top.antifeudal.entity.PageBean;
 import top.antifeudal.entity.User;
 import top.antifeudal.util.DBUtil;
 
@@ -15,7 +16,7 @@ public class UserImpl implements UserDao{
 
 	@Override
 	public ArrayList<User> findValidUser() {
-		String sql = "SELECT * FROM sys_user u WHERE u.is_lock = 0 AND u.is_delete = 0";
+		String sql = "SELECT * FROM sys_user u WHERE u.is_lock = 0 AND u.is_delete = 0;";
 		System.out.println("<<=====" + sql);
 		ArrayList<User> userList = new ArrayList<User>();
 		Connection connection = DBUtil.open();
@@ -81,13 +82,38 @@ public class UserImpl implements UserDao{
 		}
 	}
 	
+	public Integer getBackUserSize(String userName, String telephone) {
+		String sql = "SELECT COUNT(*) FROM sys_user u, sys_role r "
+				+ "WHERE u.role_id = r.id AND u.user_name LIKE '%" + userName + "%' AND u.phone_number "
+				+ "LIKE '%" + telephone +"%';";
+		Integer count = 0;
+		Connection connection = DBUtil.open();
+		try{
+			PreparedStatement pstm = connection.prepareStatement(sql);
+			ResultSet rs = pstm.executeQuery();
+			while(rs.next()){
+				count = rs.getInt(1);
+			}
+			return count;
+		} catch(Exception e) {
+			e.printStackTrace();
+			return count;
+		} finally {
+			DBUtil.close(connection);
+		}
+	}
+	
 	@Override
-	public ArrayList<BUser> findAllBackUsers(String um, String telephone) {
+	public PageBean<BUser> getAllBackUsers(String um, String tp, Integer curPage, Integer pageSize) {
+		ArrayList<BUser> userList = new ArrayList<BUser>();
+		PageBean<BUser> page = new PageBean<BUser>(this.getBackUserSize(um, tp), pageSize);
+		page.setCurPage(curPage);
 		String sql = "SELECT u.id, r.role_name, u.account, u.user_name, u.phone_number, u.is_lock, "
 				+ "u.create_time, u.is_delete, u.remark FROM sys_user u, sys_role r "
-				+ "WHERE u.role_id = r.id AND u.user_name LIKE '%" + um + "%' AND u.phone_number LIKE '%" + telephone +"%';";
+				+ "WHERE u.role_id = r.id AND u.user_name LIKE '%" + um + "%' AND u.phone_number "
+				+ "LIKE '%" + tp +"%'LIMIT " + page.getStartIndex() + ", " + page.getPageSize() + ";";
 		System.out.println("<<=====" + sql);
-		ArrayList<BUser> userList = new ArrayList<BUser>();
+		
 		Connection connection = DBUtil.open();
 		try {
 			PreparedStatement pstm = connection.prepareStatement(sql);
@@ -107,10 +133,11 @@ public class UserImpl implements UserDao{
 				BUser bUser = new BUser(id, roleName, account, userName, phoneNumber, isLock, createTime, isDelete, remark);
 				userList.add(bUser);
 			}
-			return userList;
+			page.setList(userList);
+			return page;
 		} catch(Exception e) {
 			e.printStackTrace();
-			return userList;
+			return page;
 		} finally {
 			DBUtil.close(connection);
 		}

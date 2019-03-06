@@ -11,6 +11,7 @@ import java.util.Date;
 import top.antifeudal.dao.ImageFileGetDao;
 import top.antifeudal.entity.BImageFile;
 import top.antifeudal.entity.ImageFile;
+import top.antifeudal.entity.PageBean;
 import top.antifeudal.util.DBUtil;
 
 public class ImageFileGetImpl implements ImageFileGetDao{
@@ -93,13 +94,16 @@ public class ImageFileGetImpl implements ImageFileGetDao{
 	}
 
 	@Override
-	public ArrayList<BImageFile> getBackImageFiles(String fn, String um) {
+	public PageBean<BImageFile> getAllBackImageFiles(String fn, String um, Integer curPage, Integer pageSize) {
 		ArrayList<BImageFile> imageFiles = new ArrayList<BImageFile>();
+		PageBean<BImageFile> page = new PageBean<BImageFile>(this.getBackImageFileSize(fn, um), pageSize);
+		page.setCurPage(curPage);
 		Connection connection = DBUtil.open();
 		String sql = "SELECT f.id, f.file_name, o.country, u.user_name, f.file_ext, f.file_size, f.is_show " 
 				+ "FROM sys_file AS f, sys_file_origin AS fo, sys_origin AS o, sys_user AS u "
 				+ "WHERE f.id = fo.file_id AND fo.origin_id = o.id AND o.user_id = u.id AND "
-				+ "u.user_name LIKE '%" + fn + "%' AND u.phone_number LIKE '%" + um +"%';";
+				+ "f.file_name LIKE '%" + fn + "%' AND u.user_name LIKE '%" + um +"%' "
+				+ "LIMIT " + page.getStartIndex() + ", " + page.getPageSize() + ";";
 		System.out.println("<<=====" + sql);
 
 		try {
@@ -116,11 +120,34 @@ public class ImageFileGetImpl implements ImageFileGetDao{
 				BImageFile imageFile = new BImageFile(id,fileName,country,userName,fileExt,fileSize,isShow);
 				imageFiles.add(imageFile);
 			}
-			return imageFiles;
+			page.setList(imageFiles);
+			return page;
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return imageFiles;
+			return page;
 		}finally {
+			DBUtil.close(connection);
+		}
+	}
+	
+	@Override
+	public Integer getBackImageFileSize(String fn, String um) {
+		String sql = "SELECT COUNT(*) FROM sys_file AS f, sys_file_origin AS fo, sys_origin AS o, sys_user AS u "
+				+ "WHERE f.id = fo.file_id AND fo.origin_id = o.id AND o.user_id = u.id AND "
+				+ "f.file_name LIKE '%" + fn + "%' AND u.user_name LIKE '%" + um +"%';";
+		Integer count = 0;
+		Connection connection = DBUtil.open();
+		try{
+			PreparedStatement pstm = connection.prepareStatement(sql);
+			ResultSet rs = pstm.executeQuery();
+			while(rs.next()){
+				count = rs.getInt(1);
+			}
+			return count;
+		} catch(Exception e) {
+			e.printStackTrace();
+			return count;
+		} finally {
 			DBUtil.close(connection);
 		}
 	}

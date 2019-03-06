@@ -1,8 +1,9 @@
 package top.antifeudal.dao;
 
-import java.util.List;
-
+import java.util.ArrayList;
+import top.antifeudal.entity.BOrigin;
 import top.antifeudal.entity.Origin;
+import top.antifeudal.entity.PageBean;
 
 public interface OriginDao {
 	
@@ -25,6 +26,17 @@ public interface OriginDao {
 	 * @throws
 	 */
 	public Boolean deleteOriginById(Integer id);
+	
+	/**
+	 * @Title: changeOriginState   
+	 * @Description: TODO(改变origin删除状态)   
+	 * @param: @param id
+	 * @param: @param s
+	 * @param: @return      
+	 * @return: Boolean      
+	 * @throws
+	 */
+	public Boolean changeOriginState(Integer id, Byte s);
 	
 	/**
 	 * 根据一个照片地点进行修改
@@ -54,5 +66,27 @@ public interface OriginDao {
 	 * @return: List<Origin>      
 	 * @throws
 	 */
-	public List<Origin> getAllNotDeleteOrigins();
+	public ArrayList<Origin> getAllNotDeleteOrigins();
+	
+	/**
+	 * @Title: getAllBackOrigins   
+	 * @Description: TODO(获取所有的图片分享地址)   
+	 * @param: @param un
+	 * @param: @param cty
+	 * @param: @return      
+	 * @return: List<BOrigin>      
+	 * @throws
+	 */
+	public PageBean<BOrigin> getAllBackOrigins(String un, String cty, Integer curPage, Integer pageSize);
+	
+	/**
+	 * @Title: getBackOriginSize   
+	 * @Description: TODO(获取后台显示的所有Origin)   
+	 * @param: @param un
+	 * @param: @param cty
+	 * @param: @return      
+	 * @return: Integer      
+	 * @throws
+	 */
+	public Integer getBackOriginSize(String un, String cty);
 }
