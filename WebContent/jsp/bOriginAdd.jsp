@@ -23,7 +23,7 @@
 		<input class="search-box" type="text" name="city" placeholder="City" />
 		<input class="search-box" type="text" name="street" placeholder="Street"/>
 		<input class="search-box" type="text" name="priority" placeholder="Priority *" />
-		<textarea class="search-text-area" name="remark"></textarea><br/>
+		<textarea class="search-text-area" name="remark" placeholder="Remark"></textarea><br/>
 		<input class="btn btn-add-sv" type="submit" value="保存">
 		<a href="<%=basePath %>/OriginManagement"><input class="btn btn-add-rt" type="button" value="返回"></a>
 	</form>

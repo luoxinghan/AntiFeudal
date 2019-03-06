@@ -11,7 +11,7 @@ public interface ImageFileUploadDao {
 	 * @param image
 	 * @return
 	 */
-	public Boolean addNewFile(ImageFile image);
+	public Boolean addNewFile(ImageFile image, Integer originId);
 	
 	/**
 	 * 一次性添加多个文件到数据库

@@ -62,12 +62,6 @@ public class StringUtil {
 		return result;
 	}
 
-	public static String getYearMonthDay() {
-		Calendar calendar = Calendar.getInstance();
-		return "\\" + calendar.get(Calendar.YEAR) + "\\" + (calendar.get(Calendar.MONTH) + 1) + "\\"
-				+ calendar.get(Calendar.DATE);
-	}
-
 	/**
 	 * @Method: makeFileName
 	 * @Description: 生成上传文件的文件名，文件名以：uuid+"_"+文件的原始名称
@@ -97,7 +91,8 @@ public class StringUtil {
 		int dir1 = hashcode & 0xf; // 0--15
 		int dir2 = (hashcode & 0xf0) >> 4; // 0-15
 		// 构造新的保存目录
-		String dir = savePath + "\\" + dir1 + "\\" + dir2; // upload\2\3 upload\3\5
+		//String dir = savePath + "\\" + dir1 + "\\" + dir2; // upload\2\3 upload\3\5
+		String dir = savePath + getYearMonthDay();
 		// File既可以代表文件也可以代表目录
 		File file = new File(dir);
 		// 如果目录不存在
@@ -112,6 +107,12 @@ public class StringUtil {
 		path = path.replaceAll("/", "\\\\");
 		path = path.replaceAll( "\\\\ ",   "\\\\\\\\ ");
 		return path;
+	}
+	
+	public static String getYearMonthDay() {
+		Calendar calendar = Calendar.getInstance();
+		return "\\" + calendar.get(Calendar.YEAR) + "\\" + (calendar.get(Calendar.MONTH) + 1) + "\\"
+				+ calendar.get(Calendar.DATE);
 	}
 	
 	/**

@@ -81,10 +81,14 @@ public class ImageFileGetImpl implements ImageFileGetDao{
 	public Integer getMaxImageFilesId() {
 		String sql = "select max(id) from sys_file; ";
 		Connection connection = DBUtil.open();
+		Integer count = 0;
 		try {
 			PreparedStatement pstm = connection.prepareStatement(sql);
 			ResultSet rs = pstm.executeQuery();
-			return  rs != null ? rs.getInt(1) : null;
+			while(rs.next()){
+				count = rs.getInt(1);
+			}
+			return count;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
@@ -115,7 +119,7 @@ public class ImageFileGetImpl implements ImageFileGetDao{
 				String country = rs.getString(3);
 				String userName = rs.getString(4);
 				String fileExt = rs.getString(5);
-				Double fileSize = rs.getDouble(6);
+				Double fileSize = Double.valueOf(String.format("%.2f", rs.getDouble(6)));
 				Byte isShow = rs.getByte(7);
 				BImageFile imageFile = new BImageFile(id,fileName,country,userName,fileExt,fileSize,isShow);
 				imageFiles.add(imageFile);

@@ -12,7 +12,15 @@ import top.antifeudal.util.DBUtil;
 public class ImageFileUploadImpl implements ImageFileUploadDao{
 
 	@Override
-	public Boolean addNewFile(ImageFile image) {
+	public Boolean addNewFile(ImageFile image, Integer originId) {
+		
+		ImageFileGetImpl impl = new ImageFileGetImpl();
+		Integer fId = impl.getMaxImageFilesId();
+		ImageFileOriginImpl impl2 = new ImageFileOriginImpl();
+		if (originId != 0) {
+			impl2.addImageFileOrigin(fId + 1, originId);
+		}
+		
 		String sql = "INSERT into sys_file(file_name, file_ext, file_path, file_des, file_size, is_show, create_time, is_delete, remark) VALUES(?,?,?,?,?,?,?,?,?);";
 		Connection connection = DBUtil.open();
 		System.out.println("=====>>" + sql);

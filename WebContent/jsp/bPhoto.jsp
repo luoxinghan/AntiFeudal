@@ -21,7 +21,7 @@
 			<span class="sh-txt">用户名:</span> <input name="userName" class="sh" type="text"/>
 			<input class="btn btn-sh" type="submit" value="查询">
 		</form>
-		<button class="btn btn-add">Upload</button>
+		<a href="<%=basePath %>/jsp/bPhotoUpload.jsp"><button class="btn btn-add">Upload</button></a>
 	</div>
 	<div class="mid-table-area">
 		<table class="show-table">

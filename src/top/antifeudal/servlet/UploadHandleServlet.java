@@ -19,7 +19,6 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import top.antifeudal.entity.ImageFile;
-import top.antifeudal.impl.ImageFileGetImpl;
 import top.antifeudal.impl.ImageFileUploadImpl;
 import top.antifeudal.util.StringUtil;
 
@@ -50,11 +49,15 @@ public class UploadHandleServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String fileDes = request.getParameter("fileDes");
-		Integer originId = Integer.valueOf(request.getParameter("originId"));
-		Byte isShow = Byte.valueOf(request.getParameter("isShow"));
-		
-		Double fileSize;
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		Integer originId = 0;
+		String saveFilename = "";
+		String fileExtName = "";
+		String realSavePath = "";
+		String fileDes = "";
+		String remark = "";
+		Double fileSize = 0.0;
 		String savePath = this.getServletContext().getRealPath("/file/upload");
         //上传时生成的临时文件保存目录
         String tempPath = this.getServletContext().getRealPath("/file/temp");
@@ -66,9 +69,9 @@ public class UploadHandleServlet extends HttpServlet {
             //创建临时目录
             tmpFile.mkdir();
         }
-        fileSize = tmpFile.length() / 1024.0;
         //消息提示
         String message = "";
+        Integer state = 0;
         try{
             //使用Apache文件上传组件处理文件上传步骤：
             //1、创建一个DiskFileItemFactory工厂
@@ -111,47 +114,37 @@ public class UploadHandleServlet extends HttpServlet {
                     String name = item.getFieldName();
                     //解决普通输入项的数据的中文乱码问题
                     String value = item.getString("UTF-8");
+                    if (name.equals("originId")) {
+						originId = Integer.valueOf(value);
+					} else if (name.equals("fileDes")) {
+                    	fileDes = value;
+                    } else if (name.equals("remark")){
+                    	remark = value;
+					}
                     //value = new String(value.getBytes("iso8859-1"),"UTF-8");
-                    System.out.println(name + "=" + value);
+                    //System.out.println(name + "=" + value);
                 }else{//如果fileitem中封装的是上传文件
                     //得到上传的文件名称，
                     String filename = item.getName();
+                    fileSize = item.getSize() / 1024.0;
                     System.out.println(filename);
                     if(filename==null || filename.trim().equals("")){
                         continue;
                     }
+                    
                     //注意：不同的浏览器提交的文件名是不一样的，有些浏览器提交上来的文件名是带有路径的，如：  c:\a\b\1.txt，而有些只是单纯的文件名，如：1.txt
                     //处理获取到的上传文件的文件名的路径部分，只保留文件名部分
                     filename = filename.substring(filename.lastIndexOf("\\")+1);
                     //得到上传文件的扩展名
-                    String fileExtName = filename.substring(filename.lastIndexOf(".")+1);
+                    fileExtName = filename.substring(filename.lastIndexOf(".")+1);
                     //如果需要限制上传的文件类型，那么可以通过文件的扩展名来判断上传的文件类型是否合法
                     System.out.println("上传的文件的扩展名是："+fileExtName);
                     //获取item中的上传文件的输入流
                     InputStream in = item.getInputStream();
                     //得到文件保存的名称
-                    String saveFilename = StringUtil.makeFileName(filename);
+                    saveFilename = StringUtil.makeFileName(filename);
                     //得到文件的保存目录
-                    String realSavePath = StringUtil.getTheProcessedPath(StringUtil.makePath(saveFilename, savePath));
-                    
-                    ImageFileUploadImpl fileUploadImpl = new ImageFileUploadImpl();
-                    ImageFile imageFile = new ImageFile();
-                    
-                    imageFile.setFileName(saveFilename);
-                    imageFile.setFileExt(fileExtName);
-                    imageFile.setFilePath(StringUtil.getAfterString(realSavePath, "file"));
-                    imageFile.setFileDescribe(fileDes);
-                    imageFile.setFileSize(fileSize);
-                    imageFile.setIsShow(isShow);
-                    imageFile.setCreateTime(new Date());
-                    imageFile.setIsDelete((byte) 0);
-                    
-                    boolean rv = fileUploadImpl.addNewFile(imageFile);
-                    if (rv) {
-						ImageFileGetImpl impl = new ImageFileGetImpl();
-						Integer fId = impl.getMaxImageFilesId();
-						
-					}
+                    realSavePath = StringUtil.getTheProcessedPath(StringUtil.makePath(saveFilename, savePath));
                     
                     //创建一个文件输出流
                     FileOutputStream out = new FileOutputStream(realSavePath + "\\" + saveFilename);
@@ -171,27 +164,45 @@ public class UploadHandleServlet extends HttpServlet {
                     //删除处理文件上传时生成的临时文件
                     //item.delete();
                     message = "文件上传成功！";
+                    state = 1;
                 }
             }
+            ImageFileUploadImpl fileUploadImpl = new ImageFileUploadImpl();
+            ImageFile imageFile = new ImageFile();
+            
+            imageFile.setFileName(saveFilename);
+            imageFile.setFileExt(fileExtName);
+            imageFile.setFilePath(StringUtil.getAfterString(realSavePath, "file"));
+            imageFile.setFileDescribe(fileDes);
+            imageFile.setFileSize(fileSize);
+            imageFile.setIsShow(Byte.valueOf("1"));
+            imageFile.setCreateTime(new Date());
+            imageFile.setIsDelete(Byte.valueOf("0"));
+            imageFile.setRemark(remark);
+            
+            fileUploadImpl.addNewFile(imageFile, originId);
+            
         }catch (FileUploadBase.FileSizeLimitExceededException e) {
             e.printStackTrace();
             request.setAttribute("message", "单个文件超出最大值！！！");
-            request.getRequestDispatcher("/message.jsp").forward(request, response);
+            state = 0;
+            request.setAttribute("state", state);
+            request.getRequestDispatcher("/jsp/message.jsp").forward(request, response);
             return;
         }catch (FileUploadBase.SizeLimitExceededException e) {
             e.printStackTrace();
             request.setAttribute("message", "上传文件的总的大小超出限制的最大值！！！");
-            request.getRequestDispatcher("/message.jsp").forward(request, response);
+            state = 0;
+            request.setAttribute("state", state);
+            request.getRequestDispatcher("/jsp/message.jsp").forward(request, response);
             return;
         }catch (Exception e) {
             message= "文件上传失败！";
+            state = 0;
             e.printStackTrace();
         }
         request.setAttribute("message",message);
-        request.getRequestDispatcher("/message.jsp").forward(request, response);
+        request.setAttribute("state", state);
+        request.getRequestDispatcher("/jsp/message.jsp").forward(request, response);
 	}
-	
-	
-
-
 }
