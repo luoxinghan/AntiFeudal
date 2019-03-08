@@ -69,6 +69,16 @@ public interface OriginDao {
 	public ArrayList<Origin> getAllNotDeleteOrigins();
 	
 	/**
+	 * 获取所有有效的origin
+	 * @Title: getAllEffectiveOrigins   
+	 * @Description: TODO(这里用一句话描述这个方法的作用)   
+	 * @param: @return      
+	 * @return: ArrayList<BOrigin>      
+	 * @throws
+	 */
+	public ArrayList<BOrigin> getAllEffectiveOrigins();
+	
+	/**
 	 * @Title: getAllBackOrigins   
 	 * @Description: TODO(获取所有的图片分享地址)   
 	 * @param: @param un

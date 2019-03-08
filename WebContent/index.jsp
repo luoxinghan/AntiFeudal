@@ -26,7 +26,7 @@
 	<div class="div1">
 		<div class="div1-area">
 		    <div class="area-card">
-		      <a href="<%=basePath %>/jsp/photos.jsp" class="option">
+		      <a href="<%=basePath %>PhotosShow" class="option">
 		      	<img src="<%=basePath %>/image/group1.jpg" alt="LuoXinghan" />
 		      </a>
 		    </div> 
@@ -49,7 +49,7 @@
 			<div class="div2-know-text">
 				<%=frontContent != null ? frontContent.getContent() : "" %>
 			</div>
-			<a href="<%=basePath %>/jsp/photos.jsp"><button class="btn div2-btn">read more</button></a>
+			<a href="<%=basePath %>PhotosShow"><button class="btn div2-btn">read more</button></a>
 		</div>
 		<img alt="div2-background-image" src="<%=basePath %>image/div2-bg.png" />
 	</div>

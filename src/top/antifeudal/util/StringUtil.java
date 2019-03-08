@@ -35,6 +35,15 @@ public class StringUtil {
 		}
 	}
 
+	public static Boolean isEmpty(String str) {
+		if (str == null || str.equals("")) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	
 	/**
 	 * 判断是否为null 是则返回/
 	 * 

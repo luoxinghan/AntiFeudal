@@ -170,6 +170,34 @@ public class OriginImpl implements OriginDao {
 	}
 	
 	@Override
+	public ArrayList<BOrigin> getAllEffectiveOrigins(){
+		ArrayList<BOrigin> origins = new ArrayList<BOrigin>();
+        String sql = "SELECT o.id, u.user_name, o.country, o.state, o.city, o.street, o.display_priority, o.is_delete FROM sys_origin AS o, sys_user AS u WHERE o.user_id = u.id AND o.is_delete = 0 ORDER BY user_id, display_priority ASC;";
+        Connection connection = DBUtil.open();
+        try {
+        	PreparedStatement pstm = connection.prepareStatement(sql);
+			ResultSet rs = pstm.executeQuery();
+
+            while (rs.next()) {
+            	BOrigin origin = new BOrigin();
+            	origin.setId(rs.getInt(1));
+				origin.setUserName(rs.getString(2));
+				origin.setCountry(rs.getString(3));
+				origin.setState(StringUtil.emptyOrNull(rs.getString(4)));
+				origin.setCity(StringUtil.emptyOrNull(rs.getString(5)));
+				origin.setStreet(StringUtil.emptyOrNull(rs.getString(6)));
+				origin.setDisplayPriority(rs.getByte(7));
+			    origin.setIsDelete(rs.getByte(8));
+                origins.add(origin);
+            }
+            
+        } catch (Exception e) {
+            System.out.println("EXCEPTION: " + e);
+        }
+        return origins;
+	}
+	
+	@Override
 	public Integer getBackOriginSize(String un, String cty) {
 		String sql = "SELECT COUNT(*) FROM sys_origin AS o, sys_user AS u "
 				+ "WHERE o.user_id = u.id AND u.user_name LIKE '%" + un + "%' AND o.country "
