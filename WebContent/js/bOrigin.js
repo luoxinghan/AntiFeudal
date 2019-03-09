@@ -40,7 +40,7 @@ function deleteOrigin(id) {
 function recoverOrigin(id) {
 	swal({ 
 	  title: "确定恢复吗？", 
-	  text: "删除后该地区的图片将在前台展示！", 
+	  text: "恢复后该地区的图片将在前台展示！", 
 	  type: "warning",
 	  showCancelButton: true, 
 	  confirmButtonColor: "#2ed573",

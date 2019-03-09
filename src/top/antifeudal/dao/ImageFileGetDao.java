@@ -59,4 +59,15 @@ public interface ImageFileGetDao {
 	 * @throws
 	 */
 	public Integer getBackImageFileSize(String fn, String um);
+	
+	/**
+	 * @Title: changeImageFileState   
+	 * @Description: TODO(改变图片的显示和隐藏状态)   
+	 * @param: @param id
+	 * @param: @param s
+	 * @param: @return      
+	 * @return: Boolean      
+	 * @throws
+	 */
+	public Boolean changeImageFileState(Integer id, Byte s);
 }

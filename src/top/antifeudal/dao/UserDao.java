@@ -75,6 +75,17 @@ public interface UserDao {
 	public User findById(int id);
 	
 	/**
+	 * @Title: changeUserState   
+	 * @Description: TODO(改变用户是否锁定状态)   
+	 * @param: @param id
+	 * @param: @param s
+	 * @param: @return      
+	 * @return: Boolean      
+	 * @throws
+	 */
+	public Boolean changeUserState(Integer id, Byte s);
+	
+	/**
 	 * 根据可登录的信息查找用户
 	 * @param str
 	 * @return

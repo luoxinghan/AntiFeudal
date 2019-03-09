@@ -141,6 +141,7 @@ public class OriginImpl implements OriginDao {
 	public ArrayList<Origin> getAllNotDeleteOrigins(){
 		ArrayList<Origin> origins = new ArrayList<Origin>();
         String sql = "SELECT * FROM sys_origin WHERE is_delete = 0 ORDER BY display_priority ASC;";
+        System.out.println("<<=====" + sql);
         Connection connection = DBUtil.open();
         try {
         	PreparedStatement pstm = connection.prepareStatement(sql);

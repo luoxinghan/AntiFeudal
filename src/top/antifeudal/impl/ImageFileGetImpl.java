@@ -155,5 +155,24 @@ public class ImageFileGetImpl implements ImageFileGetDao{
 			DBUtil.close(connection);
 		}
 	}
+	
+	@Override
+	public Boolean changeImageFileState(Integer id, Byte s) {
+		String sql = "UPDATE sys_file SET is_show = ? WHERE id = ?;";
+		Connection connection = DBUtil.open();
+		System.out.println("=====>>" + sql);
+		try {
+			PreparedStatement pstm = connection.prepareStatement(sql);
+			pstm.setByte(1, s);
+			pstm.setInt(2, id);
+			pstm.executeUpdate();
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			DBUtil.close(connection);
+		}
+	}
 
 }

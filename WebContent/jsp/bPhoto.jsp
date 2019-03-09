@@ -43,12 +43,14 @@
                 <td><%=pg.getList().get(i).getCountry() %></td>
                 <td><%=pg.getList().get(i).getUserName() %></td>
                 <td><%=pg.getList().get(i).getFileExt() %></td>
-                <td><%=pg.getList().get(i).getFileSize() %></td>
+                <td><%=pg.getList().get(i).getFileSize() %>kb</td>
                 <td><%=pg.getList().get(i).getIsShow() == 1 ? "展示" : "隐藏" %></td>
                 <td>
-                	<a class="a-ud">修改</a> |
-                	<a class="a-dl">删除</a> |
-                	<a class="a-lk">隐藏</a>
+                	<%if(pg.getList().get(i).getIsShow() == 1){ %>
+                		<a href="PhotoDelete?id=<%=pg.getList().get(i).getId() %>&s=0" class="a-lk">隐藏</a>
+                	<%} else { %>
+                		<a href="PhotoDelete?id=<%=pg.getList().get(i).getId() %>&s=1" class="a-rv">显示</a>
+                	<%}%>
                 </td>
                 
             </tr>

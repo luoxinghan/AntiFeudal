@@ -12,12 +12,15 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="<%=basePath %>/common/bcommon.css">
+<script type="text/javascript" src="<%=basePath%>/js/bUser.js"></script>
+<link rel="stylesheet" href="<%=basePath %>/common/sweetalert/sweetalert.css" />
+<script type="text/javascript" src="<%=basePath %>/common/sweetalert/sweetalert-dev.js"></script>
 <title>用户</title>
 </head>
 <body>
 <div>
 	<div class="top-search-area">
-		<form action="UsersManagement" method="post">
+		<form action="UserManagement" method="post">
 			<span class="sh-txt">用户名:</span> <input name="userName" class="sh" type="text"/>
 			<span class="sh-txt">电话号码:</span> <input name="telephone" class="sh" type="text"/>
 			<input class="btn btn-sh" type="submit" value="查询">
@@ -49,9 +52,12 @@
                 <td><%=pg.getList().get(i).getCreateTime() %></td>
                 <td><%=pg.getList().get(i).getIsDelete() == 1 ? "已删除" : "未删除"%></td>
                 <td>
-                	<a class="a-ud">修改</a> |
-                	<a class="a-dl">删除</a> |
-                	<a class="a-lk">锁定</a>
+                	<%if(pg.getList().get(i).getIsLock() == 1){ %>
+                		<a onclick="recoverUser(<%=pg.getList().get(i).getId() %>)" class="a-rv">恢复</a>
+                	<%} else { %>
+                		<a href="UserUpdateCheck?id=<%=pg.getList().get(i).getId() %>" class="a-ud">修改</a> |
+                		<a onclick="deleteUser(<%=pg.getList().get(i).getId() %>)" class="a-lk">锁定</a>
+                	<%}%>
                 </td>
                 
             </tr>
