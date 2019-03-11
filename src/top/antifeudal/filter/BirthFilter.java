@@ -16,13 +16,14 @@ import javax.servlet.http.HttpSession;
  * Servlet Filter implementation class BirthFilter
  */
 /**
- * @WebFilter("/jsp/birth.jsp")
+ * 
  * Title: BirthFilter
  * Description: 
  * @author luoxinghan
  * @date 2019年2月20日 下午9:18:39
  *
  */
+@WebFilter("/jsp/birth.jsp")
 public class BirthFilter implements Filter {
 
 	/**

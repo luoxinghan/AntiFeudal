@@ -15,7 +15,7 @@
 <title>图片</title>
 </head>
 <body>
-<div class="top-search-area">
+	<div class="top-search-area">
 		<form action="PhotoManagement" method="post">
 			<span class="sh-txt">文件名:</span> <input name="fileName" class="sh" type="text"/>
 			<span class="sh-txt">用户名:</span> <input name="userName" class="sh" type="text"/>

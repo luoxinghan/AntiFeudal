@@ -18,7 +18,7 @@
 	<ul>
 		<li><a class="fa fa-circle-o" href="<%=basePath%>index.jsp"><span> Home</span></a></li>
 		<li><a class="fa fa-circle-o" href="#"><span> Story</span></a></li>
-		<li><a class="fa fa-circle-o" href="<%=basePath%>photos.jsp"><span> Photo</span></a></li>
+		<li><a class="fa fa-circle-o" href="<%=basePath%>PhotosShow"><span> Photo</span></a></li>
 		<li><a class="fa fa-circle-o" href="#"><span> Trip</span></a></li>
 		<li><a class="fa fa-circle-o" href="#"><span> Contact</span></a></li>
 		<li><a class="fa fa-circle-o" href="#"><span> More+</span></a></li>

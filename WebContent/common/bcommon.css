@@ -184,6 +184,10 @@ a{
 	border-radius: 5px;
 }
 
+.story-text-area {
+	height: 50%;
+}
+
 .search-select {
 	box-sizing: border-box;
 	width: 80%;

@@ -15,9 +15,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet Filter implementation class SurveyFilter
  */
-/**
- * @WebFilter("/index.jsp")
- */
+@WebFilter("/jsp/bmain.jsp")
 public class SurveyFilter implements Filter {
 
     /**
@@ -50,7 +48,7 @@ public class SurveyFilter implements Filter {
 		HttpSession httpSession = req.getSession();
 		if (httpSession.getAttribute("userName") == null) {
 			HttpServletResponse httpServletResponse = (HttpServletResponse) response;
-			httpServletResponse.sendRedirect("./jsp/login.jsp");
+			httpServletResponse.sendRedirect("./login.jsp");
 		} else {
 			chain.doFilter(request, response);
 		}

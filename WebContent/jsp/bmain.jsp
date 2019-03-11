@@ -5,7 +5,7 @@
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
-	//User user = (User)request.getSession().getAttribute("user");
+	User user = (User)request.getSession().getAttribute("buser");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -19,14 +19,14 @@
 		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 		<a href="<%=basePath%>UserManagement" target="innerFrame">Users</a>
 		<a href="<%=basePath%>RolesGet.rl" target="innerFrame">Roles</a> 
-		<a href="#">Stories</a> 
+		<a href="<%=basePath%>StoriesGet.sr" target="innerFrame">Stories</a> 
 		<a href="<%=basePath%>PhotoManagement" target="innerFrame">Photos</a> 
 		<a href="<%=basePath%>OriginManagement" target="innerFrame">Origins</a>
 	</div>
 
 	<div id="topInfo" class="topInfo">
 		<span style="font-size: 30px; cursor: pointer" onclick="openNav()">&#9776;</span>
-		<a class="userInfo">Welcome Admin.</a>
+		<a class="userInfo">欢迎 <%=user.getUserName() %>. </a>
 	</div>
 
 	<div id="main">

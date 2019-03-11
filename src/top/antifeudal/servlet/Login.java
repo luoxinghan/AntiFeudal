@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import top.antifeudal.entity.User;
 import top.antifeudal.impl.UserImpl;
@@ -57,11 +58,9 @@ public class Login extends HttpServlet {
 			request.getRequestDispatcher("/jsp/login.jsp").forward(request, response);
 		} else if ((userName.equals(user.getAccount()) || userName.equals(user.getPhoneNumber()) || userName.equals(user.getUserName())) 
 				&& password.equals(user.getPassword())) {
-			if(user.getRoleId() == 2) {
-				request.getRequestDispatcher("/jsp/birth.jsp").forward(request, response);
-			} else {
-			request.getRequestDispatcher("/index.jsp").forward(request, response);
-			}
+			HttpSession httpSession = request.getSession();
+			httpSession.setAttribute("buser", user);
+			request.getRequestDispatcher("/jsp/bmain.jsp").forward(request, response);
 		} else {
 			request.setAttribute("hint", "wrongPass");
 			request.getRequestDispatcher("/jsp/login.jsp").forward(request, response);

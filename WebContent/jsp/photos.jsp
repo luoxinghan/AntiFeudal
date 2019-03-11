@@ -18,6 +18,8 @@
 <link rel="stylesheet" type="text/css" href="<%=basePath %>/css/photos.css" />
 </head>
 <body>
+	<jsp:include page="./loading.jsp"></jsp:include>
+	<jsp:include page="../common/slidebar.jsp"></jsp:include>
 	<%for(int i = 0; i < oList.size(); i++) { 
 		ArrayList<ImageFile> imageFiles = oList.get(i).getImageFiles();
 		String p = "";
@@ -82,6 +84,12 @@
 		span.onclick = function() {
 			modal.style.display = "none";
 		}
+		
+		$('.btn-slider').on("click", function(){
+			$('.origin').toggleClass('menu-open');
+			$('header').toggleClass('menu-open');
+			$("body").toggleClass("hide-scroll");
+		});
 	</script>
 </body>
 </html>

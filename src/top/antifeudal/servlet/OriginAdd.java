@@ -8,8 +8,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import top.antifeudal.entity.Origin;
+import top.antifeudal.entity.User;
 import top.antifeudal.impl.OriginImpl;
 
 /**
@@ -40,7 +40,11 @@ public class OriginAdd extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
-		Integer userId = 3;
+		Integer userId = 1;
+		User user = (User) request.getSession().getAttribute("buser");
+		if (user != null) {
+			userId = user.getId();
+		}
 		String country = request.getParameter("country");
 		String state = request.getParameter("state");
 		String city = request.getParameter("city");

@@ -1,9 +1,25 @@
+@-webkit-keyframes fadein {
+    0% {
+        opacity: 0;
+        background-color: #fff;
+    }
+    100% {
+        opacity: 1;
+        background-color:  #0b0b0b;
+    }
+} 
+
 body,html{
 	margin: 0;
 	width: 100%;
 	height: 100%;
 	background: #0b0b0b;
 	font-family: 'Georgia', serif;
+	-webkit-animation-name: fadein;
+    -webkit-animation-duration: 3s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: 1; /* 动画只播放一次  */
+    overflow-x: hidden;
 	/*font-family: 'Impact', fantasy;*/
 }
 
@@ -12,6 +28,10 @@ body,html{
 	color: white;
 	border-bottom: 2px solid #fff;
 	text-align: center;
+	position: relative;
+	left: 0;
+	z-index: 10;
+	transition: left 1.4s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .place{
@@ -32,6 +52,10 @@ header {
 	flex-flow: row wrap;
 	display: -webkit-box;
 	display: flex;
+	position: relative;
+	left: 0;
+	z-index: 10;
+	transition: left 1.4s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 header .img-div {
@@ -57,7 +81,7 @@ header .img-div img:hover{
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    z-index: 202; /* Sit on top */
     padding-top: 20px; /* Location of the box */
     left: 0;
     top: 0;
@@ -139,4 +163,15 @@ header .img-div img:hover{
     .modal-content {
         width: 100%;
     }
+}
+
+.menu-open {
+	overflow-x: visible;
+	backface-visibility: hidden;
+	left: 248px;
+	filter: blur(5px);
+}
+
+.hide-scroll {
+	overflow-y: hidden;
 }

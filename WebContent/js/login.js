@@ -1,11 +1,4 @@
 function login() {
-	swal({
-		title : "请阅读",
-		text : "因为网站还不成熟，所以注册时用最简单的密码即可。\n直接使用此账户：用户名123456 密码：123456",
-		type : "warning",
-		showCancelButton : false,
-		closeOnConfirm : false
-	});
 	var loginDiv = document.getElementById('cont_form_login');
 	var loginBt = document.getElementById('login_bt');
 	loginDiv.style.display = "block";
@@ -22,7 +15,7 @@ function login() {
 function unRegister() {
 	swal({
 		title : "请阅读",
-		text : "对不起，除了罗菱小仙女之外的人都不能注册。",
+		text : "对不起，暂时不提供注册功能！如需使用请联系邮箱：xinghanluo@gmail.com",
 		type : "warning",
 		showCancelButton : false,
 		closeOnConfirm : false
