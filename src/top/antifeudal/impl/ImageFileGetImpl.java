@@ -175,4 +175,36 @@ public class ImageFileGetImpl implements ImageFileGetDao{
 		}
 	}
 
+	@Override
+	public ImageFile getARandomImageFile() {
+		ImageFile imageFile = new ImageFile();
+		Connection connection = DBUtil.open();
+		String sql = "SELECT * FROM sys_file WHERE id >= ((SELECT MAX(id) FROM sys_file)-(SELECT MIN(id) FROM sys_file)) * RAND() + (SELECT MIN(id) FROM sys_file)  LIMIT 1;";
+		System.out.println("<<=====" + sql);
+
+		try {
+			PreparedStatement pstm = connection.prepareStatement(sql);
+			ResultSet rs = pstm.executeQuery();
+			while(rs.next()){
+				Integer id = rs.getInt(1);
+				String fileName = rs.getString(2);
+				String fileExt = rs.getString(3);
+				String filePath = rs.getString(4);
+				String fileDes = rs.getString(5);
+				Double fileSize = rs.getDouble(6);
+				Byte isShow = rs.getByte(7);
+				Date createTime = rs.getTimestamp(8);
+				Byte isDelete = rs.getByte(9);
+				String remark = rs.getString(10);
+				imageFile = new ImageFile(id,fileName,fileExt,filePath,fileDes,fileSize,isShow,createTime,isDelete,remark);
+			}
+			return imageFile;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return imageFile;
+		}finally {
+			DBUtil.close(connection);
+		}
+	}
+
 }

@@ -196,4 +196,33 @@ public class StoryImpl implements StoryDao {
 		}
 	}
 
+	@Override
+	public ArrayList<BStory> getLastStories(Integer size) {
+		ArrayList<BStory> stories = new ArrayList<BStory>();
+        String sql = "SELECT a.id, u.user_name, a.article_title, a.article_des, a.create_time, a.update_time, a.is_delete "
+        		+ "FROM sys_user AS u, sys_article AS a WHERE a.user_id = u.id "
+        		+ "ORDER BY update_time DESC LIMIT 0, " + size + ";";
+        Connection connection = DBUtil.open();
+        System.out.println("<<=====" + sql);
+        try {
+        	PreparedStatement pstm = connection.prepareStatement(sql);
+			ResultSet rs = pstm.executeQuery();
+
+            while (rs.next()) {
+            	BStory bStory = new BStory();
+            	bStory.setId(rs.getInt(1));
+            	bStory.setUserName(rs.getString(2));
+            	bStory.setArticleTitle(rs.getString(3));
+            	bStory.setArticleDes(StringUtil.emptyOrNull(rs.getString(4)));
+            	bStory.setCreateTime(rs.getTimestamp(5));
+            	bStory.setUpdateTime(rs.getTimestamp(6));
+            	bStory.setIsDelete(rs.getByte(7));
+                stories.add(bStory);
+            }
+        } catch (Exception e) {
+            System.out.println("EXCEPTION: " + e);
+        }
+        return stories;
+	}
+
 }

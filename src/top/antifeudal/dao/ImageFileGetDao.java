@@ -70,4 +70,13 @@ public interface ImageFileGetDao {
 	 * @throws
 	 */
 	public Boolean changeImageFileState(Integer id, Byte s);
+	
+	/**
+	 * @Title: getARandomImageFile   
+	 * @Description: TODO(获取一个随机的图片)   
+	 * @param: @return      
+	 * @return: ImageFile      
+	 * @throws
+	 */
+	public ImageFile getARandomImageFile();
 }

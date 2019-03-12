@@ -81,4 +81,14 @@ public interface StoryDao {
 	 * @throws
 	 */
 	public Integer getBackStorySize(String un, String st);
+	
+	/**
+	 * @Title: getLastStories   
+	 * @Description: TODO(获取size条)   
+	 * @param: @param size
+	 * @param: @return      
+	 * @return: BStory      
+	 * @throws
+	 */
+	public ArrayList<BStory> getLastStories(Integer size);
 }

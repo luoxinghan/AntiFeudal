@@ -30,7 +30,7 @@
 	</div>
 
 	<div id="main">
-		<iframe src="<%=basePath%>common/jsp/welcome.jsp" class="innerFrame"
+		<iframe src="<%=basePath%>GetToWelcome.wc" class="innerFrame"
 			name="innerFrame" frameborder="0" scrolling="auto"></iframe>
 	</div>
 

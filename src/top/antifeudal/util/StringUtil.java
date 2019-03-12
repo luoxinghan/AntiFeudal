@@ -118,6 +118,11 @@ public class StringUtil {
 		return path;
 	}
 	
+	public static String changeTheUrl(String path) {
+		path = path.replaceAll("\\\\", "/");
+		return path;
+	}
+	
 	public static String getYearMonthDay() {
 		Calendar calendar = Calendar.getInstance();
 		return "\\" + calendar.get(Calendar.YEAR) + "\\" + (calendar.get(Calendar.MONTH) + 1) + "\\"
