@@ -17,6 +17,8 @@ public class BStory {
 	
 	private String articleTitle;
 	
+	private String articleContent;
+	
 	private String articleDes;
 	
 	private Date createTime;
@@ -29,11 +31,12 @@ public class BStory {
 		super();
 	}
 
-	public BStory(Integer id, String userName, String articleTitle, String articleDes, Date createTime, Date updateTime, Byte isDelete) {
+	public BStory(Integer id, String userName, String articleTitle, String articleContent, String articleDes, Date createTime, Date updateTime, Byte isDelete) {
 		super();
 		this.id = id;
 		this.userName = userName;
 		this.articleTitle = articleTitle;
+		this.articleContent = articleContent;
 		this.articleDes = articleDes;
 		this.createTime = createTime;
 		this.updateTime = updateTime;
@@ -62,6 +65,14 @@ public class BStory {
 
 	public void setArticleTitle(String articleTitle) {
 		this.articleTitle = articleTitle;
+	}
+
+	public String getArticleContent() {
+		return articleContent;
+	}
+
+	public void setArticleContent(String articleContent) {
+		this.articleContent = articleContent;
 	}
 
 	public String getArticleDes() {

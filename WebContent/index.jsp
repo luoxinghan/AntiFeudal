@@ -49,16 +49,16 @@
 			<div class="div2-know-text">
 				<%=frontContent != null ? frontContent.getContent() : "" %>
 			</div>
-			<a href="<%=basePath %>PhotosShow"><button class="btn div2-btn">read more</button></a>
+			<a href="<%=basePath %>FrontStories.sr"><button class="btn div2-btn">read more</button></a>
 		</div>
 		<img alt="div2-background-image" src="<%=basePath %>image/div2-bg.png" />
 	</div>
 	<footer class="div4">
 		<div class="div4-footer-top">
 			<ul>
-				<li><a href="#">Home</a></li>
+				<li><a href="<%=basePath%>index.jsp">Home</a></li>
 				<li><a href="#">About AntiFeudal</a></li>
-				<li><a href="#">Contact Me</a></li>
+				<li><a href="<%=basePath %>/jsp/contact.jsp">Contact Me</a></li>
 			</ul>
 		</div>
 		<div class="div4-footer-bottom">

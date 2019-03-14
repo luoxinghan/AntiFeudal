@@ -13,10 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import top.antifeudal.entity.BStory;
 import top.antifeudal.entity.PageBean;
-import top.antifeudal.entity.Role;
 import top.antifeudal.entity.Story;
 import top.antifeudal.entity.User;
-import top.antifeudal.impl.RoleImpl;
 import top.antifeudal.impl.StoryImpl;
 import top.antifeudal.impl.UserImpl;
 import top.antifeudal.util.DateUtil;
@@ -136,5 +134,11 @@ public class StoryManagement extends HttpServlet {
 		StoryImpl storyImpl = new StoryImpl();
 		storyImpl.addNewStory(story);
 		request.getRequestDispatcher("StoriesGet.sr").forward(request, response);
+	}
+	
+	private void FrontStories(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		ArrayList<BStory> stories = new StoryImpl().getLastStories(20);
+		request.setAttribute("stories", stories);
+		request.getRequestDispatcher("/jsp/stories.jsp").forward(request, response);
 	}
 }
