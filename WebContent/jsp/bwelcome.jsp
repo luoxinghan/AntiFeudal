@@ -12,7 +12,6 @@
 	ArrayList<BStory> stories = (ArrayList<BStory>) request.getAttribute("stories");
 	ImageFile photo = (ImageFile) request.getAttribute("photo");
 	String filePath = StringUtil.changeTheUrl(photo.getFilePath() + '\\' + photo.getFileName());
-	User user = (User)request.getSession().getAttribute("buser");
 %>
 <!DOCTYPE html>
 <html>
@@ -47,7 +46,7 @@
 		<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=280 src="//music.163.com/outchain/player?type=0&id=2705297777&auto=0&height=430"></iframe>
 	</div>
 	<div class="ct-right">
-		<a><button class="btn">上传照片</button></a>
+		<a href="<%=basePath%>jsp/bPhotoUpload.jsp"><button class="btn">上传照片</button></a>
 		<h2>投诉建议</h2>
 		<form name="suggestForm" action="<%=basePath %>Suggestions.wc" 
 			 method="post" onsubmit="return validate(this);">

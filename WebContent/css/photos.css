@@ -16,7 +16,7 @@ body,html{
 	background: #0b0b0b;
 	font-family: 'Georgia', serif;
 	-webkit-animation-name: fadein;
-    -webkit-animation-duration: 3s;
+    -webkit-animation-duration: 1.5s;
     -webkit-animation-timing-function: linear;
     -webkit-animation-iteration-count: 1; /* 动画只播放一次  */
     overflow-x: hidden;
@@ -164,6 +164,30 @@ header .img-div img:hover{
         width: 100%;
     }
 }
+
+.cr{
+	position: relative;
+	left: 0;
+	z-index: 10;
+	width: 100%;
+	background-color: white;
+	transition: left 1.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.cr-footer-bottom {
+	font-size: 10px;
+	color: #2e3a3e; display : flex;
+	justify-content: center;
+	padding: 20px 0;
+	display: flex;
+}
+
+.cr-footer-bottom small {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 
 .menu-open {
 	overflow-x: visible;

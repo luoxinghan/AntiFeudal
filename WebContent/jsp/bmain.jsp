@@ -17,6 +17,7 @@
 <body>
 	<div id="mySidenav" class="sidenav">
 		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+		<a href="<%=basePath%>GetToWelcome.wc" target="innerFrame">Panel</a>
 		<a href="<%=basePath%>UserManagement" target="innerFrame">Users</a>
 		<a href="<%=basePath%>RolesGet.rl" target="innerFrame">Roles</a> 
 		<a href="<%=basePath%>StoriesGet.sr" target="innerFrame">Stories</a> 

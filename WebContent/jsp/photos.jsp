@@ -53,6 +53,11 @@
 		<% }%>
 	</header>
 	<%}%>
+	<footer class="cr">
+		<div class="cr-footer-bottom">
+			<small>© 2019 AntiFeudal All Rights Reserved. V2.3</small>
+		</div>
+	</footer>
 	
 	<!-- The Modal -->
 	<div id="myModal" class="modal">
@@ -87,6 +92,7 @@
 		
 		$('.btn-slider').on("click", function(){
 			$('.origin').toggleClass('menu-open');
+			$('.cr').toggleClass('menu-open');
 			$('header').toggleClass('menu-open');
 			$("body").toggleClass("hide-scroll");
 		});

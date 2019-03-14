@@ -1,0 +1,164 @@
+@charset "UTF-8";
+
+@-webkit-keyframes fadein {
+    0% {
+        opacity: 0;
+        background-color: #fff;
+    }
+    100% {
+        opacity: 1;
+        background-color:  #fff;
+    }
+} 
+
+body,html{
+	background: #f6f6f6;
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	overflow-x: hidden;
+	-webkit-animation-name: fadein;
+    -webkit-animation-duration: 1.5s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: 1; /* 动画只播放一次  */
+}
+
+.contact-bg{
+	width: 100%;
+	height: 20%;
+	background: #3498db;
+	color: white;
+	text-align: center;
+}
+.contact-bg h1{
+	padding: 0;
+	margin: 0;
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.mid-contact-way{
+	width: 100%;
+	height: 100%;
+	position: relative;
+	left: 0;
+	z-index: 10;
+	transition: left 1.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.middle{
+	text-align: center;
+}
+
+.mid-contact-way h2{
+	margin: 20px;
+	padding: 0;
+	text-align: center;
+	color: #57606f;
+}
+
+.border-line{
+	width: 100px;
+    height: 5px;
+    background: #6ab04c;
+    margin: 15px auto;
+}
+
+.btn{
+	display: inline-block;
+	width: 90px;
+	height: 90px;
+	background: #f1f1f1;
+	margin: 10px;
+	border-radius: 30%;
+	box-shadow: 0 5px 15px -5px #00000070;
+	color: #3498db;
+	overflow: hidden;
+	position: relative;
+}
+
+.btn i{
+	line-height: 90px;
+	font-size: 26px;
+	transition: 0.2s linear;
+}
+
+.btn:hover i{
+	transform: scale(1.3);
+	color: #f1f1f1;
+}
+
+.btn::before{
+	content: "";
+	position: absolute;
+	width: 120%;
+	height: 120%;
+	background: #3498db;
+	transform: rotate(45deg);
+	left: -110%;
+	top: 90%;
+}
+
+.btn:hover::before{
+	animation: aaa 0.7s 1;
+	top: -10%;
+	left: -10%;
+}
+
+.other-way p{
+	text-align: center;
+	font-size: 20px;	
+	color: #3498db;
+}
+@keyframes aaa {
+	0%{
+		top: -110%;
+		left: 90%;
+	}
+	50%{
+		top: 10%;
+		left: -30%;
+	}
+	100%{
+		top: -10%;
+		left: -10%;
+	}
+}
+
+.cr {
+	position: relative;
+	left: 0;
+	margin-top:40px;
+	z-index: 10;
+	width: 100%;
+	background-color: white;
+	transition: left 1.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.cr-footer-bottom {
+	font-size: 10px;
+	color: #2e3a3e; display : flex;
+	justify-content: center;
+	padding: 20px 0;
+	display: flex;
+}
+
+.cr-footer-bottom small {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
+.menu-open {
+	overflow-x: visible;
+	backface-visibility: hidden;
+	left: 248px;
+	filter: blur(5px);
+}
+
+.hide-scroll {
+	overflow-y: hidden;
+}
