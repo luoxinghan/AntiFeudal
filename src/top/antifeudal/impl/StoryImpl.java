@@ -110,6 +110,38 @@ public class StoryImpl implements StoryDao {
 			DBUtil.close(connection);
 		}
 	}
+	
+
+	@Override
+	public BStory getBackStoryById(Integer sid) {
+		String sql = "SELECT a.id, u.user_name, a.article_title,a.article_content, a.article_des, a.create_time, "
+				+ "a.update_time, a.is_delete FROM sys_user u, sys_article a "
+				+ "WHERE a.user_id = u.id AND a.is_delete = 0 AND a.id = " + sid + ";";
+		System.out.println("<<=====" + sql);
+		BStory bStory = new BStory();
+		Connection connection = DBUtil.open();
+		try{
+			PreparedStatement ps = connection.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				bStory.setId(rs.getInt(1));
+            	bStory.setUserName(rs.getString(2));
+            	bStory.setArticleTitle(rs.getString(3));
+            	bStory.setArticleContent(rs.getString(4));
+            	bStory.setArticleDes(StringUtil.emptyOrNull(rs.getString(5)));
+            	bStory.setCreateTime(rs.getTimestamp(6));
+            	bStory.setUpdateTime(rs.getTimestamp(7));
+            	bStory.setIsDelete(rs.getByte(8));
+			}
+			return bStory;
+		} catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			DBUtil.close(connection);
+		}
+	}
+
 
 	@Override
 	public ArrayList<Story> getAllNotDeleteStories() {
@@ -201,7 +233,7 @@ public class StoryImpl implements StoryDao {
 	public ArrayList<BStory> getLastStories(Integer size) {
 		ArrayList<BStory> stories = new ArrayList<BStory>();
         String sql = "SELECT a.id, u.user_name, a.article_title, a.article_content, a.article_des, a.create_time, a.update_time, a.is_delete "
-        		+ "FROM sys_user AS u, sys_article AS a WHERE a.user_id = u.id "
+        		+ "FROM sys_user AS u, sys_article AS a WHERE a.user_id = u.id AND a.is_delete = 0 "
         		+ "ORDER BY update_time DESC LIMIT 0, " + size + ";";
         Connection connection = DBUtil.open();
         System.out.println("<<=====" + sql);
@@ -226,5 +258,4 @@ public class StoryImpl implements StoryDao {
         }
         return stories;
 	}
-
 }

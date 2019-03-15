@@ -141,4 +141,13 @@ public class StoryManagement extends HttpServlet {
 		request.setAttribute("stories", stories);
 		request.getRequestDispatcher("/jsp/stories.jsp").forward(request, response);
 	}
+	
+	private void StoryDetailGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Integer id = Integer.valueOf(request.getParameter("id"));
+		BStory story = new StoryImpl().getBackStoryById(id);
+		if (story != null) {
+			request.setAttribute("story", story);
+			request.getRequestDispatcher("/jsp/storyDetail.jsp").forward(request, response);	
+		}
+	}
 }

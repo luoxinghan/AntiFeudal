@@ -133,7 +133,6 @@ body,html{
 	margin-top:40px;
 	z-index: 10;
 	width: 100%;
-	background-color: white;
 	transition: left 1.4s cubic-bezier(0.19, 1, 0.22, 1);
 }
 

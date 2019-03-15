@@ -16,7 +16,6 @@
 <title>Stories</title>
 <link rel="stylesheet" type="text/css" href="<%=basePath %>css/stories.css">
 <link rel="shortcut icon" type="image/x-icon" href="<%=basePath %>image/icon/icon.ico" media="screen" />
-<script src="<%=basePath %>common/jquery/jquery-3.3.1.min.js"></script>
 </head>
 <body>
 	<jsp:include page="../common/slidebar.jsp"></jsp:include>
@@ -34,7 +33,7 @@
 					<%=stories.get(i).getArticleContent() %>
 				</div>
 				<p class="st-time"><%=DateUtil.dateFormat(stories.get(i).getUpdateTime()) %></p>
-				<a><button class="btn">全文阅读</button></a>
+				<a href="<%=basePath %>StoryDetailGet.sr?id=<%=stories.get(i).getId()%>"><button class="btn">全文阅读</button></a>
 			</div>
 		</div>
 		<%} %>

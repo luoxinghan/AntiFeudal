@@ -50,6 +50,16 @@ public interface StoryDao {
 	public Story getStoryById(Integer sid);
 	
 	/**
+	 * @Title: getBackStoryById   
+	 * @Description: TODO(前台展示需要)   
+	 * @param: @param sid
+	 * @param: @return      
+	 * @return: BStory      
+	 * @throws
+	 */
+	public BStory getBackStoryById(Integer sid);
+	
+	/**
 	 * @Title: getAllNotDeleteStories   
 	 * @Description: TODO(获得所有未删除的故事)   
 	 * @param: @return      

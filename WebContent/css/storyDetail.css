@@ -1,0 +1,145 @@
+@charset "UTF-8";
+
+@-webkit-keyframes fadein {
+    0% {
+        opacity: 0;
+        background-color: #fff;
+    }
+    100% {
+        opacity: 1;
+        background-color:  #f6f6f6;
+    }
+} 
+
+body,html{
+	background-color: #f6f6f6;
+	padding: 0;
+	margin: 0;
+	overflow-x: hidden;
+	-webkit-animation-name: fadein;
+    -webkit-animation-duration: 1.5s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: 1; /* 动画只播放一次  */
+}
+
+.container{
+	left: 0;
+	z-index: 10;
+	position: relative;
+	width: 100%;
+	background: #f6f6f6;
+}
+
+.head-title{
+	width: 100%;
+	padding: 15px 0px 15px 0px;
+	background: #f6f6f6;
+	margin-bottom: 2px;
+	text-align: center;
+}
+.head-title a{
+	text-decoration: none;
+	color: #000000;
+	font-size: 40px;
+	text-transform: uppercase;
+	font-weight: 900;
+	letter-spacing: 13px;
+}
+.story-c{
+	width: 50%;
+	padding: 10px 20px 0px 20px;
+	margin: 0 auto;
+	border: 1px solid #dfe4ea;
+	border-radius: 5px;
+}
+
+.story-c .title{
+	color: #222222;
+	font-size: 24px;
+}
+
+.story-c .author{
+	color: #444444;
+	font-size: 16px;
+}
+
+.story-c .content{
+	letter-spacing: 2px;
+	line-height: 25.6px;
+}
+
+.story-c .time{
+	color: #777777;
+	font-size: 14px;
+}
+
+.back-flex{
+	position: fixed;
+	box-shadow: 0 -2px 4px 0 rgba(0, 0, 0, 0.2);
+	bottom: 0;
+	width: 100%;
+	height: 0px;
+	z-index: 100;
+	background: #f1f1f1;
+	overflow: hidden;
+	transition: 0.4s;
+}
+
+.back-flex .flex-area{
+	width: 50%;
+	height: 100%;
+	margin: 0 auto;
+}
+.btn-area{
+	border-top: 1px solid #dfe4ea;
+	height: 60px;
+	position: relative;
+}
+
+
+.btn{
+	border-radius: 5px;
+	font-family: "montserrat", sans-serif;
+	font-size: 12px;
+	color: #ffffff;
+	padding: 6px 30px;
+	min-width: 60px;
+	cursor: pointer;
+	transition: 0.4s;
+	background: #000000;
+	border: 1px solid #555;
+}
+
+.btn-flexd{
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.btn:hover{
+	background-color: #f1f1f1;
+	color: #cc6666;
+}
+
+.cr {
+	position: relative;
+	left: 0;
+	bottom: 0;
+	margin-top: 2px;
+	z-index: 10;
+	width: 100%;
+}
+
+.cr-footer-bottom {
+	font-size: 10px;
+	color: #2e3a3e; display : flex;
+	justify-content: center;
+	padding: 20px 0;
+	display: flex;
+}
+
+.cr-footer-bottom small {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
