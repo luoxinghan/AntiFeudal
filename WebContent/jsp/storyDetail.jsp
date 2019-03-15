@@ -14,7 +14,6 @@
 <title><%=story.getArticleTitle() %></title>
 <link rel="stylesheet" type="text/css" href="<%=basePath %>css/storyDetail.css">
 <link rel="shortcut icon" type="image/x-icon" href="<%=basePath %>image/icon/icon.ico" media="screen" />
-<script src="<%=basePath %>common/jquery/jquery-3.3.1.min.js"></script>
 </head>
 <body>
 	<div id="container" class="container">
@@ -39,7 +38,7 @@
 		</footer>
 		<div id="fiexd" class="back-flex">
 			<div class="flex-area">
-				<a><button class="btn-flexd btn">返回</button></a>
+				<a href="<%=basePath %>FrontStories.sr"><button class="btn-flexd btn">返回</button></a>
 			</div>
 		</div>
 	</div>

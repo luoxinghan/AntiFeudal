@@ -51,6 +51,11 @@
 	<script>swal("用户密码错误！");</script>
 	<%
 	}
+	if(hint.equals("noAdmin")){
+	%>
+	<script>swal("您没有权限登录后台管理系统！");</script>
+	<%
+	}
 	%>
 </body>
 </html>

@@ -39,7 +39,8 @@
 			<p class="author"><%=stories.get(i).getUserName() + "-"+ DateUtil.dateFormat(stories.get(i).getUpdateTime()) %></p>
 		</div>
 		<%} %>
-		<a href="<%=basePath %>StoriesGet.sr">· · · · · ·</a>
+		<a href="<%=basePath %>StoriesGet.sr">· · · · · ·</a><br/>
+		<a href="<%=basePath%>jsp/bStoryAdd.jsp"><button class="btn">写一个故事</button></a>
 	</div>
 	<div class="ct-mid">
 		<h2>或者听听歌</h2>

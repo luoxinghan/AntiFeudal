@@ -130,7 +130,7 @@ html,body {
 	color: #ffffff;
 	text-transform: uppercase;
 	padding: 10px 20px;
-	min-width: 160px;
+	min-width: 120px;
 	cursor: pointer;
 	/* transition: color 0.4s linear; */
 	transition: 0.4s;

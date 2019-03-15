@@ -25,7 +25,6 @@
 			<span class="sh-txt">电话号码:</span> <input name="telephone" class="sh" type="text"/>
 			<input class="btn btn-sh" type="submit" value="查询">
 		</form>
-		<button class="btn btn-add">Add</button>
 	</div>
 	<div class="mid-table-area">
 		<table class="show-table">
