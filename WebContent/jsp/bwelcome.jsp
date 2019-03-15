@@ -11,7 +11,7 @@
 	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 	ArrayList<BStory> stories = (ArrayList<BStory>) request.getAttribute("stories");
 	ImageFile photo = (ImageFile) request.getAttribute("photo");
-	String filePath = StringUtil.changeTheUrl(photo.getFilePath() + '\\' + photo.getFileName());
+	String filePath = StringUtil.changeTheUrl(photo.getFilePath() + '/' + photo.getFileName());
 %>
 <!DOCTYPE html>
 <html>

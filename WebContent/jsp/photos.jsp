@@ -47,7 +47,7 @@
 		<%
 			int count = imageFiles.size();
 			for(int j = 0; j < count; j++) {
-				String filePath = imageFiles.get(j).getFilePath() + '\\' + imageFiles.get(j).getFileName();
+				String filePath = imageFiles.get(j).getFilePath() + '/' + imageFiles.get(j).getFileName();
 		%>
 		<div class="img-div"><img src="../photos<%=filePath %>" alt="<%=imageFiles.get(j).getFileDescribe() %>"></div>
 		<% }%>
