@@ -125,7 +125,7 @@ public class StringUtil {
 	
 	public static String getYearMonthDay() {
 		Calendar calendar = Calendar.getInstance();
-		return "\\" + calendar.get(Calendar.YEAR) + "\\" + (calendar.get(Calendar.MONTH) + 1) + "\\"
+		return "//" + calendar.get(Calendar.YEAR) + "//" + (calendar.get(Calendar.MONTH) + 1) + "//"
 				+ calendar.get(Calendar.DATE);
 	}
 	

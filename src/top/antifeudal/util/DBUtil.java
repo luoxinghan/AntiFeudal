@@ -14,7 +14,7 @@ public class DBUtil {
 	private static String driver = "com.mysql.jdbc.Driver";
 
 	//数据库位置
-	private static String url = "jdbc:mysql://localhost:3306/antifeudal?Unicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC";
+	private static String url = "jdbc:mysql://localhost:3306/antifeudal?Unicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai";
 	/*private static String url = "jdbc:mysql://localhost:3306/antifeudal?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true";*/
 	
 	//用户名

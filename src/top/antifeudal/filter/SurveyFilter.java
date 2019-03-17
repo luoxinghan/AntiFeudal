@@ -46,7 +46,7 @@ public class SurveyFilter implements Filter {
 		}
 
 		HttpSession httpSession = req.getSession();
-		if (httpSession.getAttribute("userName") == null) {
+		if (httpSession.getAttribute("buser") == null) {
 			HttpServletResponse httpServletResponse = (HttpServletResponse) response;
 			httpServletResponse.sendRedirect("./login.jsp");
 		} else {

@@ -41,7 +41,7 @@ public class DateUtil {
 	 * @return
 	 */
 	public static Date stringToDate(String str){
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date date = new Date();
 		try {
 			date = sdf.parse(str);
@@ -57,7 +57,7 @@ public class DateUtil {
 	 * @return
 	 */
 	public static String dateFormat(Date date){
-		SimpleDateFormat format0 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		SimpleDateFormat format0 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String time = format0.format(date.getTime());
         return time;
 	}
@@ -68,7 +68,7 @@ public class DateUtil {
 	 * @return
 	 */
 	public static java.sql.Timestamp changeToTimestampDate(java.util.Date utilDate){
-		SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");  
+		SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");  
 		java.util.Date date;
 		try {
 			date = sdf.parse(dateFormat(utilDate));

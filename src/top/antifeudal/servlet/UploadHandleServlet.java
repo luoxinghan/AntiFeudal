@@ -134,7 +134,7 @@ public class UploadHandleServlet extends HttpServlet {
                     
                     //注意：不同的浏览器提交的文件名是不一样的，有些浏览器提交上来的文件名是带有路径的，如：  c:\a\b\1.txt，而有些只是单纯的文件名，如：1.txt
                     //处理获取到的上传文件的文件名的路径部分，只保留文件名部分
-                    filename = filename.substring(filename.lastIndexOf("\\")+1);
+                    filename = filename.substring(filename.lastIndexOf("//")+1);
                     //得到上传文件的扩展名
                     fileExtName = filename.substring(filename.lastIndexOf(".")+1);
                     //如果需要限制上传的文件类型，那么可以通过文件的扩展名来判断上传的文件类型是否合法
