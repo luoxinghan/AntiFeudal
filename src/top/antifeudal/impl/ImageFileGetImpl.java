@@ -103,10 +103,10 @@ public class ImageFileGetImpl implements ImageFileGetDao{
 		PageBean<BImageFile> page = new PageBean<BImageFile>(this.getBackImageFileSize(fn, um), pageSize);
 		page.setCurPage(curPage);
 		Connection connection = DBUtil.open();
-		String sql = "SELECT f.id, f.file_name, o.country, u.user_name, f.file_ext, f.file_size, f.is_show " 
+		String sql = "SELECT f.id, f.file_name,f.file_des, o.country, o.state, o.city, f.file_size, f.is_show " 
 				+ "FROM sys_file AS f, sys_file_origin AS fo, sys_origin AS o, sys_user AS u "
 				+ "WHERE f.id = fo.file_id AND fo.origin_id = o.id AND o.user_id = u.id AND "
-				+ "f.file_name LIKE '%" + fn + "%' AND u.user_name LIKE '%" + um +"%' "
+				+ "f.file_name LIKE '%" + fn + "%' AND u.user_name LIKE '%" + um +"%' ORDER BY o.country, o.state "
 				+ "LIMIT " + page.getStartIndex() + ", " + page.getPageSize() + ";";
 		System.out.println("<<=====" + sql);
 
@@ -116,12 +116,13 @@ public class ImageFileGetImpl implements ImageFileGetDao{
 			while(rs.next()){
 				Integer id = rs.getInt(1);
 				String fileName = rs.getString(2);
-				String country = rs.getString(3);
-				String userName = rs.getString(4);
-				String fileExt = rs.getString(5);
-				Double fileSize = Double.valueOf(String.format("%.2f", rs.getDouble(6)));
-				Byte isShow = rs.getByte(7);
-				BImageFile imageFile = new BImageFile(id,fileName,country,userName,fileExt,fileSize,isShow);
+				String fileDes = rs.getString(3);
+				String country = rs.getString(4);
+				String state = rs.getString(5);
+				String city = rs.getString(6);
+				Double fileSize = Double.valueOf(String.format("%.2f", rs.getDouble(7)));
+				Byte isShow = rs.getByte(8);
+				BImageFile imageFile = new BImageFile(id,fileName,fileDes,country,state,city,fileSize,isShow);
 				imageFiles.add(imageFile);
 			}
 			page.setList(imageFiles);
@@ -138,7 +139,7 @@ public class ImageFileGetImpl implements ImageFileGetDao{
 	public Integer getBackImageFileSize(String fn, String um) {
 		String sql = "SELECT COUNT(*) FROM sys_file AS f, sys_file_origin AS fo, sys_origin AS o, sys_user AS u "
 				+ "WHERE f.id = fo.file_id AND fo.origin_id = o.id AND o.user_id = u.id AND "
-				+ "f.file_name LIKE '%" + fn + "%' AND u.user_name LIKE '%" + um +"%';";
+				+ "f.file_name LIKE '%" + fn + "%' AND u.user_name LIKE '%" + um +"%' ORDER BY o.country, o.state;";
 		Integer count = 0;
 		Connection connection = DBUtil.open();
 		try{

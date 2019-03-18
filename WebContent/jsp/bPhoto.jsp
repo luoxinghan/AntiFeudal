@@ -26,12 +26,13 @@
 	<div class="mid-table-area">
 		<table class="show-table">
             <tr>
-                <th>ID</th>
-                <th>文件名</th>
+                <th class="td-id">ID</th>
+                <th class="td-file-name">文件名</th>
+                <th class="td-file-des">描述</th>
                 <th>国家</th>
-                <th>用户名</th>
-                <th>后缀类型</th>
-                <th>文件大小</th>
+                <th>省/市/州</th>
+                <th>区/县</th>
+                <th>大小</th>
                 <th>是否展示</th>
                 <th>操作</th>
             </tr>
@@ -39,10 +40,11 @@
             <tr>
              	
                 <td><%=pg.getList().get(i).getId() %></td>
-                <td><%=pg.getList().get(i).getFileName() %></td>
+                <td title="<%=pg.getList().get(i).getFileName() %>"><%=pg.getList().get(i).getFileName() %></td>
+                <td title="<%=pg.getList().get(i).getFileDes() %>"><%=pg.getList().get(i).getFileDes() %></td>
                 <td><%=pg.getList().get(i).getCountry() %></td>
-                <td><%=pg.getList().get(i).getUserName() %></td>
-                <td><%=pg.getList().get(i).getFileExt() %></td>
+                <td><%=pg.getList().get(i).getState() %></td>
+                <td><%=pg.getList().get(i).getCity() %></td>
                 <td><%=pg.getList().get(i).getFileSize() %>kb</td>
                 <td><%=pg.getList().get(i).getIsShow() == 1 ? "展示" : "隐藏" %></td>
                 <td>
@@ -59,18 +61,18 @@
 	</div>
 	<div class="btm-page-area">
 		<div class="pagination">
-			<a style="display: <%=pg.getCurPage()<=1 ? "none":"block" %>;" href="PhotosManagement?p=<%=(pg.getCurPage() - 1)%>">&laquo;</a>
+			<a style="display: <%=pg.getCurPage()<=1 ? "none":"block" %>;" href="PhotoManagement?p=<%=(pg.getCurPage() - 1)%>">&laquo;</a>
 			<%for(int i = 0; i < pg.getTotalPage(); i++){ 
 				if(pg.getCurPage() == (i + 1)){
 			%>
-				<a class="active" href="PhotosManagement?p=<%=(i+1) %>"><%=(i+1) %></a>
+				<a class="active" href="PhotoManagement?p=<%=(i+1) %>"><%=(i+1) %></a>
 			<%  } else {%>
-				<a href="PhotosManagement?p=<%=(i+1) %>"><%=(i+1) %></a>
+				<a href="PhotoManagement?p=<%=(i+1) %>"><%=(i+1) %></a>
 			<% 
 				}
 			  }
 			%>
-			<a style="display: <%=pg.getCurPage()>=pg.getTotalPage() ? "none":"block" %>;" href="PhotosManagement?p=<%=(pg.getCurPage() + 1)%>">&raquo;</a>
+			<a style="display: <%=pg.getCurPage()>=pg.getTotalPage() ? "none":"block" %>;" href="PhotoManagement?p=<%=(pg.getCurPage() + 1)%>">&raquo;</a>
 		</div>
 	</div>
 </body>

@@ -6,11 +6,13 @@ public class BImageFile {
 	
 	private String fileName;
 	
+	private String fileDes;
+	
 	private String country;
 	
-	private String userName;
+	private String state;
 	
-	private String fileExt;
+	private String city;
 	
 	private Double fileSize;
 	
@@ -20,14 +22,15 @@ public class BImageFile {
 		super();
 	}
 
-	public BImageFile(Integer id, String fileName, String country, String userName, String fileExt, Double fileSize,
+	public BImageFile(Integer id, String fileName, String fileDes, String country, String state, String city, Double fileSize,
 			Byte isShow) {
 		super();
 		this.id = id;
 		this.fileName = fileName;
+		this.fileDes = fileDes;
 		this.country = country;
-		this.userName = userName;
-		this.fileExt = fileExt;
+		this.state = state;
+		this.city = city;
 		this.fileSize = fileSize;
 		this.isShow = isShow;
 	}
@@ -48,6 +51,14 @@ public class BImageFile {
 		this.fileName = fileName;
 	}
 
+	public String getFileDes() {
+		return fileDes;
+	}
+
+	public void setFileDes(String fileDes) {
+		this.fileDes = fileDes;
+	}
+
 	public String getCountry() {
 		return country;
 	}
@@ -56,20 +67,20 @@ public class BImageFile {
 		this.country = country;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getState() {
+		return state;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setState(String state) {
+		this.state = state;
 	}
 
-	public String getFileExt() {
-		return fileExt;
+	public String getCity() {
+		return city;
 	}
 
-	public void setFileExt(String fileExt) {
-		this.fileExt = fileExt;
+	public void setCity(String city) {
+		this.city = city;
 	}
 
 	public Double getFileSize() {
